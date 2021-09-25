@@ -5,6 +5,9 @@
 #include <map>
 #include <string>
 
+#define REDB "\033[1;91m"
+#define RST "\033[0;m"
+
 typedef std::map<llvm::Value *,std::string> ForwardDataType;
 
 class CopyConstant : public Analysis<ForwardDataType,NoAnalysisType>{
@@ -30,7 +33,7 @@ class CopyConstant : public Analysis<ForwardDataType,NoAnalysisType>{
     
     void printDataFlowValuesForward(ForwardDataType) override;
 
-    // ForwardDataType computeOutFromIn(llvm::AllocaInst *);
+    ForwardDataType computeOutFromIn(llvm::AllocaInst *);
     ForwardDataType computeOutFromIn(llvm::StoreInst *);
     ForwardDataType computeOutFromIn(llvm::LoadInst *);
 

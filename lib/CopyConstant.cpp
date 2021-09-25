@@ -6,18 +6,20 @@ ForwardDataType CopyConstant::computeOutFromIn(llvm::Instruction &I) {
         return computeOutFromIn(dyn_cast<llvm::StoreInst>(&I));
     } else if(isa<llvm::LoadInst>(&I)){
         return computeOutFromIn(dyn_cast<llvm::LoadInst>(&I));
+    } else if(isa<llvm::AllocaInst>(&I)){
+        return computeOutFromIn(dyn_cast<llvm::AllocaInst>(&I));
+    } else if(isa<llvm::GetElementPtrInst>(&I)){
+        outs() << REDB << "Instruction not supported!!!!!!" << RST << "\n";
     }
     return getForwardComponentAtInOfThisInstruction(I);
 }
 
-// ForwardDataType CopyConstant::computeOutFromIn(llvm::AllocaInst *I){
-//     // outs() << "Processing ALLOCA INST" << "\n";
-//     ForwardDataType DataFlowValues = getForwardComponentAtInOfThisInstruction(*I);
-//     std::string Name = I->getOperand(0)->getName().str();
-//     // outs() << "NAME is :" << I->getOperand(0)->hasName() << "\n";
-//     DataFlowValues[Name] = Top;
-//     return DataFlowValues;
-// }
+ForwardDataType CopyConstant::computeOutFromIn(llvm::AllocaInst *I){
+    ForwardDataType DataFlowValues = getForwardComponentAtInOfThisInstruction(*I);
+    llvm::Value *Left = dyn_cast<llvm::Value>(I);
+    DataFlowValues[Left] = Top;
+    return DataFlowValues;
+}
 
 ForwardDataType CopyConstant::computeOutFromIn(llvm::StoreInst *I){
     ForwardDataType DataFlowValues = getForwardComponentAtInOfThisInstruction(*I);
