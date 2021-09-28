@@ -1,7 +1,6 @@
 #include "llvm/IR/Function.h"
 #include "llvm/IR/Instruction.h"
 #include "vasco/Analysis.h"
-#include <vector>
 #include <map>
 #include <string>
 
@@ -13,6 +12,7 @@ typedef std::map<llvm::Value *,std::string> ForwardDataType;
 class CopyConstant : public Analysis<ForwardDataType,NoAnalysisType>{
     private:
     // ForwardDataType DataFlowValues;
+    ForwardDataType FormalParameterValues;
     std::string Bottom,Top;
     map<llvm::Value *,bool> GlobalVariables;
     // ForwardDataType InitializedVariables;
@@ -27,6 +27,7 @@ class CopyConstant : public Analysis<ForwardDataType,NoAnalysisType>{
     ForwardDataType performMeetForward(ForwardDataType, ForwardDataType ) override;
     bool EqualDataFlowValuesForward(ForwardDataType, ForwardDataType) override;
     ForwardDataType getPurelyGlobalComponentForward(ForwardDataType) override;
+    ForwardDataType getPurelyLocalComponentForward(ForwardDataType) override;
 
     std::pair<ForwardDataType,NoAnalysisType> CallInflowFunction(int, llvm::Function*, llvm::BasicBlock*,ForwardDataType,NoAnalysisType) override;
     std::pair<ForwardDataType,NoAnalysisType> CallOutflowFunction(int, llvm::Function*, llvm::BasicBlock*, ForwardDataType, NoAnalysisType, ForwardDataType, NoAnalysisType) override;
@@ -38,5 +39,7 @@ class CopyConstant : public Analysis<ForwardDataType,NoAnalysisType>{
     ForwardDataType computeOutFromIn(llvm::LoadInst *);
 
     void findGlobalVariables(llvm::Instruction*);
+    llvm::CallInst *getCallInstruction(llvm::BasicBlock *);
     string meet(string, string);
+    bool isFormalParameter(llvm::Value *);
 };

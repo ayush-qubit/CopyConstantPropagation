@@ -17,7 +17,7 @@ int main(){
 		b = x;
 		a = x;
 	}
-	// a = x;
+	a = x;
 	foo();
 	return 0;
 }
