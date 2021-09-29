@@ -47,7 +47,6 @@ ForwardDataType CopyConstant::performMeetForward(ForwardDataType dfv1,ForwardDat
     ForwardDataType DataFlowValues;
     for(auto p : dfv1){
         if(dfv2.find(p.first) != dfv2.end()){
-            // DataFlowValues[p.first] = (dfv1[p.first] == dfv2[p.first] ? dfv1[p.first] : Bottom);
             DataFlowValues[p.first] = meet(dfv1[p.first],dfv2[p.first]);
         }
         else{
@@ -56,7 +55,6 @@ ForwardDataType CopyConstant::performMeetForward(ForwardDataType dfv1,ForwardDat
     }
     for(auto p : dfv2){
         if(dfv1.find(p.first) != dfv1.end()){
-            // DataFlowValues[p.first] = (dfv1[p.first] == dfv2[p.first] ? dfv1[p.first] : Bottom);
             DataFlowValues[p.first] = meet(dfv1[p.first],dfv2[p.first]);
         }
         else{
@@ -163,8 +161,6 @@ ForwardDataType CopyConstant::getPurelyLocalComponentForward(ForwardDataType dfv
 }
 
 void CopyConstant::printDataFlowValuesForward(ForwardDataType dfv) {
-    // outs() << "Printing Data FLow Values forward" << "\n";
-    // outs() << dfv.size();
     for(auto p : dfv){
         outs() << "(";
         outs() << p.first->getName() << "=" << p.second;
@@ -178,7 +174,6 @@ void CopyConstant::findGlobalVariables(llvm::Instruction *I) {
     for(llvm::Value *ValOp : I->operands()){
         if(isa<llvm::GlobalValue>(ValOp)){
             GlobalVariables[ValOp] = true;
-            // InitializedVariables[ValOp->getName().str()] = Top;
         }
     }
 }
@@ -209,8 +204,5 @@ string CopyConstant::meet(string val1, string val2){
 }
 
 bool CopyConstant::isFormalParameter(llvm::Value *valOp){
-    if(FormalParameterValues.find(valOp) != FormalParameterValues.end()){
-        return true;
-    }
-    return false;
+    return FormalParameterValues.find(valOp) != FormalParameterValues.end();
 }

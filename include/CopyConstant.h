@@ -11,11 +11,9 @@ typedef std::map<llvm::Value *,std::string> ForwardDataType;
 
 class CopyConstant : public Analysis<ForwardDataType,NoAnalysisType>{
     private:
-    // ForwardDataType DataFlowValues;
     ForwardDataType FormalParameterValues;
     std::string Bottom,Top;
     map<llvm::Value *,bool> GlobalVariables;
-    // ForwardDataType InitializedVariables;
     public:
     CopyConstant(){
         Bottom = "\u22A5";
