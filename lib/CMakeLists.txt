@@ -1,4 +1,5 @@
 add_library(CopyConstantAnalysis SHARED
+    DataFlowValue.cpp
     CopyConstant.cpp
 )
 

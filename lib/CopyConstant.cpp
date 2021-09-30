@@ -17,7 +17,7 @@ ForwardDataType CopyConstant::computeOutFromIn(llvm::Instruction &I) {
 ForwardDataType CopyConstant::computeOutFromIn(llvm::AllocaInst *I){
     ForwardDataType DataFlowValues = getForwardComponentAtInOfThisInstruction(*I);
     llvm::Value *Left = dyn_cast<llvm::Value>(I);
-    DataFlowValues[Left] = Top;
+    DataFlowValues[Left] = new DataFlowValue();
     return DataFlowValues;
 }
 
@@ -26,7 +26,7 @@ ForwardDataType CopyConstant::computeOutFromIn(llvm::StoreInst *I){
     llvm::Value *Left = I->getOperand(1);
     llvm::Value *Right = I->getValueOperand();
     if(llvm::ConstantInt *ConstInt = dyn_cast<llvm::ConstantInt>(Right)) {
-        DataFlowValues[Left] = std::to_string(ConstInt->getSExtValue());
+        DataFlowValues[Left] = new DataFlowValue(ConstInt);
     } else if(this->isFormalParameter(Right)){
         DataFlowValues[Left] = FormalParameterValues[Right];
     } else{
@@ -47,6 +47,7 @@ ForwardDataType CopyConstant::performMeetForward(ForwardDataType dfv1,ForwardDat
     ForwardDataType DataFlowValues;
     for(auto p : dfv1){
         if(dfv2.find(p.first) != dfv2.end()){
+            // DataFlowValue result = meet(dfv1[p.first],dfv2[p.first]);
             DataFlowValues[p.first] = meet(dfv1[p.first],dfv2[p.first]);
         }
         else{
@@ -55,6 +56,7 @@ ForwardDataType CopyConstant::performMeetForward(ForwardDataType dfv1,ForwardDat
     }
     for(auto p : dfv2){
         if(dfv1.find(p.first) != dfv1.end()){
+            // DataFlowValue result = meet(dfv1[p.first],dfv2[p.first]);
             DataFlowValues[p.first] = meet(dfv1[p.first],dfv2[p.first]);
         }
         else{
@@ -66,28 +68,25 @@ ForwardDataType CopyConstant::performMeetForward(ForwardDataType dfv1,ForwardDat
 
 std::pair<ForwardDataType,NoAnalysisType> CopyConstant::CallInflowFunction(int label, llvm::Function *F, llvm::BasicBlock *BB, ForwardDataType a1, NoAnalysisType d1) {
     outs() << "\nCALLINFLOWFUNCTION CALLED!!!!!!!!!!!!" << " ";
-    ForwardDataType ArgumentValues;
-    llvm::CallInst *CI = this->getCallInstruction(BB);
-    llvm::Function *CF = CI->getCalledFunction();
-    for(auto &arg : CF->args()){ // Formal argument
-        if(llvm::Value *valOp = dyn_cast<llvm::Value>(&arg)){
-            ArgumentValues[valOp] = Top;
-        }
-    }
-    int index = 0;
-    for(auto &p : ArgumentValues){
-        llvm::Value *valOp = CI->getArgOperand(index);
-        if(llvm::ConstantInt *Const = dyn_cast<llvm::ConstantInt>(valOp)){
-            p.second = std::to_string(Const->getSExtValue());
-        }
-        else{
-            p.second = a1[valOp];
-        }
-        index++;
-    }
-    for(auto p : ArgumentValues){
-        FormalParameterValues[p.first] = p.second;
-    }
+    // ForwardDataType ArgumentValues;
+    // llvm::CallInst *CI = this->getCallInstruction(BB);
+    // llvm::Function *CF = CI->getCalledFunction();
+    // for(auto &arg : CF->args()){ // Formal argument
+    //     if(llvm::Value *valOp = dyn_cast<llvm::Value>(&arg)){
+    //         ArgumentValues[valOp] = new DataFlowValue();
+    //     }
+    // }
+    // int index = 0;
+    // for(auto &p : ArgumentValues){
+    //     llvm::Value *valOp = CI->getArgOperand(index);
+    //     if(llvm::ConstantInt *Const = dyn_cast<llvm::ConstantInt>(valOp)){
+    //         p.second = new DataFlowValue(Const);
+    //     }
+    //     index++;
+    // }
+    // for(auto p : ArgumentValues){
+    //     FormalParameterValues[p.first] = p.second;
+    // }
     a1 = getPurelyGlobalComponentForward(a1);
     return make_pair(a1,d1);
 }
@@ -107,7 +106,7 @@ ForwardDataType CopyConstant::getInitialisationValueForward() {
     llvm::Module *M = getCurrentModule();
     for(auto &G : M->getGlobalList()){
         if(llvm::Value *Var = dyn_cast<Value>(&G)){
-            DataFlowValues[Var] = Top;
+            DataFlowValues[Var] = new DataFlowValue();
             GlobalVariables[Var] = true;
         }
     }
@@ -119,10 +118,7 @@ bool CopyConstant::EqualDataFlowValuesForward(ForwardDataType dfv1, ForwardDataT
         if(dfv2.find(p.first) == dfv2.end()){
             return false;
         }
-        else if(dfv1[p.first] != dfv2[p.first]){
-            // outs() << "DataFLow Values are not equal: ";
-            // printDataFlowValuesForward(dfv1);
-            // printDataFlowValuesForward(dfv2);
+        else if(*dfv1[p.first] != *dfv2[p.first]){
             return false;
         }
     }
@@ -130,10 +126,7 @@ bool CopyConstant::EqualDataFlowValuesForward(ForwardDataType dfv1, ForwardDataT
         if(dfv1.find(p.first) == dfv1.end()){
             return false;
         }
-        else if(dfv1[p.first] != dfv2[p.first]){
-            // outs() << "DataFLow Values are not equal: ";
-            // printDataFlowValuesForward(dfv1);
-            // printDataFlowValuesForward(dfv2);
+        else if(*dfv1[p.first] != *dfv2[p.first]){
             return false;
         }
     }
@@ -163,7 +156,7 @@ ForwardDataType CopyConstant::getPurelyLocalComponentForward(ForwardDataType dfv
 void CopyConstant::printDataFlowValuesForward(ForwardDataType dfv) {
     for(auto p : dfv){
         outs() << "(";
-        outs() << p.first->getName() << "=" << p.second;
+        outs() << p.first->getName() << "=" << *p.second;
         outs() << ")";
         outs() << ",";
     }
@@ -185,22 +178,6 @@ llvm::CallInst *CopyConstant::getCallInstruction(llvm::BasicBlock *BB){
         }
     }
     return nullptr;
-}
-
-string CopyConstant::meet(string val1, string val2){
-    if(val1 == Bottom || val2 == Bottom){
-        return Bottom;
-    }
-    if(val1 == Top){
-        return val2;
-    }
-    if(val2 == Top){
-        return val1;
-    }
-    if(val1 == val2){
-        return val1;
-    }
-    return Bottom;
 }
 
 bool CopyConstant::isFormalParameter(llvm::Value *valOp){
