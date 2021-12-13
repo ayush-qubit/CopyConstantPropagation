@@ -1,0 +1,445 @@
+[0;m
+LABEL: 0 FUNCTION NAME: main INFLOW VALUE:  
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 1 FUNCTION NAME: spec_init INFLOW VALUE:  (seedi=10),
+OUTFLOW VALUE:  (seedi=10),
+
+LABEL: 2 FUNCTION NAME: debug_time INFLOW VALUE:  (seedi=10),
+OUTFLOW VALUE:  (seedi=10),
+
+LABEL: 3 FUNCTION NAME: spec_load INFLOW VALUE:  (seedi=10),
+OUTFLOW VALUE:  (seedi=10),
+
+LABEL: 4 FUNCTION NAME: spec_initbufs INFLOW VALUE:  (seedi=10),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 5 FUNCTION NAME: debug_time INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 6 FUNCTION NAME: spec_compress INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 7 FUNCTION NAME: compressStream INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 8 FUNCTION NAME: BZ2_bzWriteOpen INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 9 FUNCTION NAME: BZ2_bzCompressInit INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 10 FUNCTION NAME: bz_config_ok INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 11 FUNCTION NAME: init_RL INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 12 FUNCTION NAME: prepare_new_block INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 13 FUNCTION NAME: myfeof INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 14 FUNCTION NAME: spec_getc INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 15 FUNCTION NAME: spec_ungetc INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 16 FUNCTION NAME: spec_fread INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 17 FUNCTION NAME: BZ2_bzWrite INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 18 FUNCTION NAME: BZ2_bzCompress INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 19 FUNCTION NAME: handle_compress INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 20 FUNCTION NAME: copy_output_until_stop INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 21 FUNCTION NAME: isempty_RL INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 22 FUNCTION NAME: copy_input_until_stop INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 23 FUNCTION NAME: add_pair_to_block INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 24 FUNCTION NAME: BZ2_compressBlock INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 25 FUNCTION NAME: BZ2_blockSort INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 26 FUNCTION NAME: mainSort INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 27 FUNCTION NAME: BZ2_bz__AssertH__fail INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  
+
+LABEL: 28 FUNCTION NAME: BZ2_bzlibVersion INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 29 FUNCTION NAME: mainQSort3 INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 30 FUNCTION NAME: mmed3 INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 31 FUNCTION NAME: mainSimpleSort INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 32 FUNCTION NAME: mainGtU INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 33 FUNCTION NAME: fallbackSort INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 34 FUNCTION NAME: fallbackQSort3 INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 35 FUNCTION NAME: fallbackSimpleSort INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 36 FUNCTION NAME: BZ2_bsInitWrite INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 37 FUNCTION NAME: bsPutUChar INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 38 FUNCTION NAME: bsW INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 39 FUNCTION NAME: bsPutUInt32 INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 40 FUNCTION NAME: generateMTFValues INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 41 FUNCTION NAME: makeMaps_e INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 42 FUNCTION NAME: sendMTFValues INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 43 FUNCTION NAME: BZ2_hbAssignCodes INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 44 FUNCTION NAME: BZ2_hbMakeCodeLengths INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 45 FUNCTION NAME: bsFinishWrite INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 46 FUNCTION NAME: flush_RL INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 47 FUNCTION NAME: spec_fwrite INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 48 FUNCTION NAME: BZ2_bzWriteClose64 INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 49 FUNCTION NAME: BZ2_bzCompressEnd INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 50 FUNCTION NAME: uInt64_from_UInt32s INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 51 FUNCTION NAME: uInt64_to_double INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 52 FUNCTION NAME: uInt64_toAscii INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 53 FUNCTION NAME: uInt64_qrm10 INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 54 FUNCTION NAME: uInt64_isZero INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 55 FUNCTION NAME: ioError INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  
+
+LABEL: 56 FUNCTION NAME: showFileNames INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 57 FUNCTION NAME: cleanUpAndFail INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  
+
+LABEL: 58 FUNCTION NAME: setExit INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(exitValue=0),(smallMode=0),
+
+LABEL: 59 FUNCTION NAME: outOfMemory INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  
+
+LABEL: 60 FUNCTION NAME: showFileNames INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+
+LABEL: 61 FUNCTION NAME: cleanUpAndFail INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  
+
+LABEL: 62 FUNCTION NAME: setExit INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(exitValue=0),(smallMode=0),
+
+LABEL: 63 FUNCTION NAME: configError INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  
+
+LABEL: 64 FUNCTION NAME: panic INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(smallMode=0),
+OUTFLOW VALUE:  
+
+LABEL: 65 FUNCTION NAME: panic INFLOW VALUE:  
+OUTFLOW VALUE:  
+
+LABEL: 66 FUNCTION NAME: showFileNames INFLOW VALUE:  
+OUTFLOW VALUE:  
+
+LABEL: 67 FUNCTION NAME: cleanUpAndFail INFLOW VALUE:  
+OUTFLOW VALUE:  
+
+LABEL: 68 FUNCTION NAME: setExit INFLOW VALUE:  
+OUTFLOW VALUE:  (exitValue=0),
+
+LABEL: 69 FUNCTION NAME: debug_time INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 70 FUNCTION NAME: spec_reset INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 71 FUNCTION NAME: spec_rewind INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 72 FUNCTION NAME: spec_uncompress INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 73 FUNCTION NAME: uncompressStream INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 74 FUNCTION NAME: BZ2_bzReadOpen INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 75 FUNCTION NAME: BZ2_bzDecompressInit INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 76 FUNCTION NAME: bz_config_ok INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 77 FUNCTION NAME: BZ2_bzReadGetUnused INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 78 FUNCTION NAME: panic INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  
+
+LABEL: 79 FUNCTION NAME: showFileNames INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 80 FUNCTION NAME: cleanUpAndFail INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  
+
+LABEL: 81 FUNCTION NAME: setExit INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(exitValue=0),(smallMode=0),
+
+LABEL: 82 FUNCTION NAME: BZ2_bzReadClose INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 83 FUNCTION NAME: BZ2_bzDecompressEnd INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 84 FUNCTION NAME: myfeof INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 85 FUNCTION NAME: spec_getc INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 86 FUNCTION NAME: spec_ungetc INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 87 FUNCTION NAME: BZ2_bzRead INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 88 FUNCTION NAME: myfeof.93 INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 89 FUNCTION NAME: spec_fread INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 90 FUNCTION NAME: BZ2_bzDecompress INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 91 FUNCTION NAME: unRLE_obuf_to_output_FAST INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 92 FUNCTION NAME: unRLE_obuf_to_output_SMALL INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 93 FUNCTION NAME: BZ2_indexIntoF INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 94 FUNCTION NAME: BZ2_decompress INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 95 FUNCTION NAME: makeMaps_d INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 96 FUNCTION NAME: BZ2_hbCreateDecodeTables INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 97 FUNCTION NAME: BZ2_bz__AssertH__fail INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  
+
+LABEL: 98 FUNCTION NAME: BZ2_bzlibVersion INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 99 FUNCTION NAME: BZ2_bz__AssertH__fail INFLOW VALUE:  
+OUTFLOW VALUE:  
+
+LABEL: 100 FUNCTION NAME: BZ2_bzlibVersion INFLOW VALUE:  
+OUTFLOW VALUE:  
+
+LABEL: 101 FUNCTION NAME: spec_fwrite INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 102 FUNCTION NAME: spec_rewind INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 103 FUNCTION NAME: crcError INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  
+
+LABEL: 104 FUNCTION NAME: cadvise INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 105 FUNCTION NAME: outOfMemory INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  
+
+LABEL: 106 FUNCTION NAME: compressedStreamEOF INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  
+
+LABEL: 107 FUNCTION NAME: ioError INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  
+
+LABEL: 108 FUNCTION NAME: configError INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  
+
+LABEL: 109 FUNCTION NAME: debug_time INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 110 FUNCTION NAME: spec_reset INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 111 FUNCTION NAME: spec_compress INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 112 FUNCTION NAME: compressStream INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 113 FUNCTION NAME: BZ2_bzWriteOpen INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 114 FUNCTION NAME: BZ2_bzCompressInit INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 115 FUNCTION NAME: init_RL INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 116 FUNCTION NAME: prepare_new_block INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 117 FUNCTION NAME: BZ2_bzWrite INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 118 FUNCTION NAME: BZ2_bzCompress INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 119 FUNCTION NAME: handle_compress INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 120 FUNCTION NAME: copy_output_until_stop INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 121 FUNCTION NAME: isempty_RL INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 122 FUNCTION NAME: copy_input_until_stop INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 123 FUNCTION NAME: add_pair_to_block INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 124 FUNCTION NAME: BZ2_compressBlock INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 125 FUNCTION NAME: BZ2_blockSort INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 126 FUNCTION NAME: mainSort INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 127 FUNCTION NAME: mainQSort3 INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 128 FUNCTION NAME: mmed3 INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 129 FUNCTION NAME: mainSimpleSort INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 130 FUNCTION NAME: mainGtU INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 131 FUNCTION NAME: fallbackSort INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 132 FUNCTION NAME: fallbackQSort3 INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 133 FUNCTION NAME: fallbackSimpleSort INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 134 FUNCTION NAME: BZ2_bsInitWrite INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 135 FUNCTION NAME: bsPutUChar INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 136 FUNCTION NAME: bsW INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 137 FUNCTION NAME: bsPutUInt32 INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 138 FUNCTION NAME: generateMTFValues INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 139 FUNCTION NAME: makeMaps_e INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 140 FUNCTION NAME: sendMTFValues INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 141 FUNCTION NAME: BZ2_hbAssignCodes INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 142 FUNCTION NAME: BZ2_hbMakeCodeLengths INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 143 FUNCTION NAME: bsFinishWrite INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 144 FUNCTION NAME: flush_RL INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 145 FUNCTION NAME: BZ2_bzWriteClose64 INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+LABEL: 146 FUNCTION NAME: BZ2_bzCompressEnd INFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+OUTFLOW VALUE:  (seedi=10),(blockSize100k=⊥),(verbosity=0),(workFactor=30),(outputHandleJustInCase=0),(smallMode=0),
+
+
+Time taken by analysis: 2 seconds
+Total number of contexts created: 147
