@@ -10,11 +10,13 @@
 class DataFlowValue{
     private:
     llvm::ConstantInt *Element;
+    llvm::ConstantFP *FPElement;
     bool Top,Bottom;
 
     public:
     DataFlowValue();
     DataFlowValue(llvm::ConstantInt *);
+    DataFlowValue(llvm::ConstantFP *);
 
     int get();
     void toBottom();

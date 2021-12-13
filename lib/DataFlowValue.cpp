@@ -2,6 +2,7 @@
 
 DataFlowValue::DataFlowValue(){
     this->Element = nullptr;
+    this->FPElement = nullptr;
     this->Top = true;
     this->Bottom = false;
 }
@@ -11,19 +12,37 @@ DataFlowValue::DataFlowValue(llvm::ConstantInt *Element){
         throw "Parameter cannot be NULL";
     }
     this->Element = Element;
+    this->FPElement = nullptr;
+    this->Top = false;
+    this->Bottom = false;
+}
+
+DataFlowValue::DataFlowValue(llvm::ConstantFP *Element) {
+    if(not Element){
+        throw "Parameter cannot be NULL";
+    }
+    this->Element = nullptr;
+    this->FPElement = Element;
     this->Top = false;
     this->Bottom = false;
 }
 
 int DataFlowValue::get(){
-    if(not this->Element){
+    if(not (this->Element || this->FPElement)){
         throw "Data flow value is not concrete";
     }
-    return this->Element->getSExtValue();
+    if(this->Element){
+        return this->Element->getSExtValue();
+    }
+    if(this->FPElement){
+        return this->FPElement->getValueID();
+    }
+    return INT_MAX;
 }
 
 void DataFlowValue::toBottom(){
     this->Element = nullptr;
+    this->FPElement = nullptr;
     this->Bottom = true;
     this->Top = false;
 }
@@ -41,6 +60,9 @@ bool DataFlowValue::isConcrete(){
 }
 
 DataFlowValue *meet(DataFlowValue *dfv1, DataFlowValue *dfv2){
+    if(not (dfv1 && dfv2)){
+        return dfv1 ? dfv2:dfv1;
+    }
     if(dfv1->isBottom() && dfv2->isBottom()){
         return dfv1;
     } else if(dfv1->isTop()){
@@ -82,7 +104,13 @@ bool operator == (DataFlowValue dfv1,DataFlowValue dfv2){
     } else if(dfv1.isBottom() && dfv2.isBottom()){
         return true;
     } else if(dfv1.isConcrete() && dfv2.isConcrete()){
-        return dfv1.get() == dfv2.get();
+        if(dfv1.Element && dfv2.Element){
+            return dfv1.Element == dfv2.Element;
+        }
+        if(dfv1.FPElement && dfv2.FPElement){
+            return dfv1.FPElement == dfv2.FPElement;
+        }
+        return false;
     }
     return false;
 }

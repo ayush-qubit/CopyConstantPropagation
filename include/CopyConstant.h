@@ -7,6 +7,7 @@
 #include "DataFlowValue.h"
 #include <map>
 #include <string>
+#include <unordered_map>
 
 #define REDB "\033[1;91m"
 #define RST "\033[0;m"
@@ -18,6 +19,8 @@ class CopyConstant : public Analysis<ForwardDataType,NoAnalysisType>{
     ForwardDataType FormalParameterValues;
     map<llvm::Value *,bool> GlobalVariables;
     public:
+    CopyConstant(bool);
+    CopyConstant(bool,string);
     ForwardDataType computeOutFromIn(llvm::Instruction &) override;
     ForwardDataType getBoundaryInformationForward() override;
     ForwardDataType getInitialisationValueForward() override;
@@ -34,6 +37,8 @@ class CopyConstant : public Analysis<ForwardDataType,NoAnalysisType>{
     ForwardDataType computeOutFromIn(llvm::AllocaInst *);
     ForwardDataType computeOutFromIn(llvm::StoreInst *);
     ForwardDataType computeOutFromIn(llvm::LoadInst *);
+    ForwardDataType computeOutFromIn(llvm::GetElementPtrInst *);
+    ForwardDataType computeOutFromIn(llvm::PHINode *);
 
     void findGlobalVariables(llvm::Instruction*);
     llvm::CallInst *getCallInstruction(llvm::BasicBlock *);

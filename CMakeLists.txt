@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 project(CopyConstantPropagation)
-set(LLVM_ROOT "/usr/lib/llvm-12" CACHE PATH "/usr/lib/llvm-12")
+set(LLVM_ROOT "/usr/lib/llvm-10" CACHE PATH "/usr/lib/llvm-10")
 
 find_package(LLVM REQUIRED CONFIG)
 
