@@ -34,5 +34,6 @@ int main(int argc, char **argv){
     outs() << "\n";
     outs() << "Time taken by analysis: " << duration.count() << " seconds" << "\n";
     outs() << "Total number of contexts created: " << CC.getNumberOfContexts() << "\n";
+    outs() << "Context label counter: " << CC.getContextLabelCounter() << "\n";
     return 0;
 }

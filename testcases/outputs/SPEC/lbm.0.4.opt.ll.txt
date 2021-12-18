@@ -1,61 +1,62 @@
 [0;m
 LABEL: 0 FUNCTION NAME: main INFLOW VALUE:  
-OUTFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
+OUTFLOW VALUE:  
 
-LABEL: 1 FUNCTION NAME: MAIN_parseCommandLine INFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
-OUTFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
+LABEL: 1 FUNCTION NAME: MAIN_parseCommandLine INFLOW VALUE:  
+OUTFLOW VALUE:  
 
-LABEL: 2 FUNCTION NAME: MAIN_printInfo INFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
-OUTFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
+LABEL: 2 FUNCTION NAME: MAIN_printInfo INFLOW VALUE:  
+OUTFLOW VALUE:  
 
-LABEL: 3 FUNCTION NAME: MAIN_initialize INFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
-OUTFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
+LABEL: 3 FUNCTION NAME: MAIN_initialize INFLOW VALUE:  
+OUTFLOW VALUE:  
 
-LABEL: 4 FUNCTION NAME: LBM_allocateGrid INFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
-OUTFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
+LABEL: 4 FUNCTION NAME: LBM_allocateGrid INFLOW VALUE:  
+OUTFLOW VALUE:  
 
-LABEL: 5 FUNCTION NAME: LBM_initializeGrid INFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
-OUTFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
+LABEL: 5 FUNCTION NAME: LBM_initializeGrid INFLOW VALUE:  
+OUTFLOW VALUE:  
 
-LABEL: 6 FUNCTION NAME: LBM_loadObstacleFile INFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
-OUTFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
+LABEL: 6 FUNCTION NAME: LBM_loadObstacleFile INFLOW VALUE:  
+OUTFLOW VALUE:  
 
-LABEL: 7 FUNCTION NAME: LBM_initializeSpecialCellsForLDC INFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
-OUTFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
+LABEL: 7 FUNCTION NAME: LBM_initializeSpecialCellsForLDC INFLOW VALUE:  
+OUTFLOW VALUE:  
 
-LABEL: 8 FUNCTION NAME: LBM_initializeSpecialCellsForChannel INFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
-OUTFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
+LABEL: 8 FUNCTION NAME: LBM_initializeSpecialCellsForChannel INFLOW VALUE:  
+OUTFLOW VALUE:  
 
-LABEL: 9 FUNCTION NAME: LBM_showGridStatistics INFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
-OUTFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
+LABEL: 9 FUNCTION NAME: LBM_showGridStatistics INFLOW VALUE:  
+OUTFLOW VALUE:  
 
-LABEL: 10 FUNCTION NAME: MAIN_finalize INFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
-OUTFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
+LABEL: 10 FUNCTION NAME: MAIN_finalize INFLOW VALUE:  
+OUTFLOW VALUE:  
 
-LABEL: 11 FUNCTION NAME: LBM_compareVelocityField INFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
-OUTFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
+LABEL: 11 FUNCTION NAME: LBM_compareVelocityField INFLOW VALUE:  
+OUTFLOW VALUE:  
 
-LABEL: 12 FUNCTION NAME: loadValue INFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
-OUTFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
+LABEL: 12 FUNCTION NAME: loadValue INFLOW VALUE:  
+OUTFLOW VALUE:  
 
-LABEL: 13 FUNCTION NAME: LBM_storeVelocityField INFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
-OUTFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
+LABEL: 13 FUNCTION NAME: LBM_storeVelocityField INFLOW VALUE:  
+OUTFLOW VALUE:  
 
-LABEL: 14 FUNCTION NAME: storeValue INFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
-OUTFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
+LABEL: 14 FUNCTION NAME: storeValue INFLOW VALUE:  
+OUTFLOW VALUE:  
 
-LABEL: 15 FUNCTION NAME: LBM_freeGrid INFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
-OUTFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
+LABEL: 15 FUNCTION NAME: LBM_freeGrid INFLOW VALUE:  
+OUTFLOW VALUE:  
 
-LABEL: 16 FUNCTION NAME: LBM_handleInOutFlow INFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
-OUTFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
+LABEL: 16 FUNCTION NAME: LBM_handleInOutFlow INFLOW VALUE:  
+OUTFLOW VALUE:  
 
-LABEL: 17 FUNCTION NAME: LBM_performStreamCollide INFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
-OUTFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
+LABEL: 17 FUNCTION NAME: LBM_performStreamCollide INFLOW VALUE:  
+OUTFLOW VALUE:  
 
-LABEL: 18 FUNCTION NAME: LBM_swapGrids INFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
-OUTFLOW VALUE:  (.str=⊤),(.str.1=⊤),(.str.2=⊤),(.str.3=⊤),(.str.4=⊤),(.str.5=⊤),(.str.6=⊤),(.str.7=⊤),(.str.8=⊤),(srcGrid=⊤),(dstGrid=⊤),(.str.9=⊤),(MAIN_printInfo.actionString=⊤),(MAIN_printInfo.simTypeString=⊤),(.str.6.10=⊤),(.str.5.11=⊤),(.str.1.12=⊤),(.str.2.13=⊤),(.str.3.14=⊤),(.str.4.15=⊤),
+LABEL: 18 FUNCTION NAME: LBM_swapGrids INFLOW VALUE:  
+OUTFLOW VALUE:  
 
 
-Time taken by analysis: 1 seconds
+Time taken by analysis: 0 seconds
 Total number of contexts created: 19
+Context label counter: 18

@@ -3,6 +3,7 @@
 
 #include "llvm/IR/Function.h"
 #include "llvm/IR/Instruction.h"
+#include "llvm/Support/Debug.h"
 #include "vasco/Analysis.h"
 #include "DataFlowValue.h"
 #include <map>

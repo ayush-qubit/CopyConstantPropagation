@@ -1,0 +1,13 @@
+[0;m
+LABEL: 0 FUNCTION NAME: main INFLOW VALUE:  
+OUTFLOW VALUE:  (c=⊤),(a=⊤),(b=20),
+
+LABEL: 1 FUNCTION NAME: foo INFLOW VALUE:  (c=⊤),(a=10),(b=20),
+OUTFLOW VALUE:  (c=⊤),(a=⊤),(b=20),
+
+LABEL: 2 FUNCTION NAME: foo INFLOW VALUE:  (c=⊤),(a=⊤),(b=20),
+OUTFLOW VALUE:  (c=⊤),(a=⊤),(b=20),
+
+
+Time taken by analysis: 0 seconds
+Total number of contexts created: 3

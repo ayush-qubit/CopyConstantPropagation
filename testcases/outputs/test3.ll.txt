@@ -1,27 +1,9 @@
-[0;m0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-
+[0;m
 LABEL: 0 FUNCTION NAME: main INFLOW VALUE:  
-OUTFLOW VALUE:  (b=0
-100),(a=0
-100),
+OUTFLOW VALUE:  (b=100),(a=100),
 
-LABEL: 1 FUNCTION NAME: foo INFLOW VALUE:  (b=0
-100),(a=0
-10),
-OUTFLOW VALUE:  (b=0
-100),(a=0
-100),
+LABEL: 1 FUNCTION NAME: foo INFLOW VALUE:  (b=100),(a=10),
+OUTFLOW VALUE:  (b=100),(a=100),
 
 
 Time taken by analysis: 0 seconds
