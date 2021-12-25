@@ -11,3 +11,4 @@ OUTFLOW VALUE:  (c=⊤),(a=⊤),(b=20),
 
 Time taken by analysis: 0 seconds
 Total number of contexts created: 3
+Context label counter: 2

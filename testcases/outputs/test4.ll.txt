@@ -1,28 +1,11 @@
-[0;m0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-
+[0;m
 LABEL: 0 FUNCTION NAME: main INFLOW VALUE:  
-OUTFLOW VALUE:  (a=0
-100),(b=0
-100),
+OUTFLOW VALUE:  (a=100),(b=100),
 
-LABEL: 1 FUNCTION NAME: foo INFLOW VALUE:  (a=0
-900),(b=0
-100),
-OUTFLOW VALUE:  (a=0
-100),(b=0
-100),
+LABEL: 1 FUNCTION NAME: foo INFLOW VALUE:  (a=900),(b=100),
+OUTFLOW VALUE:  (a=100),(b=100),
 
 
 Time taken by analysis: 0 seconds
 Total number of contexts created: 2
+Context label counter: 1

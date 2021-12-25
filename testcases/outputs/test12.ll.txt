@@ -1,32 +1,8 @@
-[0;m0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-1
-0
-1
-0
-1
-0
-0
-0
-0
-
+[0;m
 LABEL: 0 FUNCTION NAME: main INFLOW VALUE:  
 OUTFLOW VALUE:  
 
 
 Time taken by analysis: 0 seconds
 Total number of contexts created: 1
+Context label counter: 0
