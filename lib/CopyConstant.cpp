@@ -178,6 +178,7 @@ ForwardDataType CopyConstant::getBoundaryInformationForward() {
         if(llvm::Value *Var = dyn_cast<Value>(&G)){
             if(G.getValueType()->isIntegerTy() || G.getValueType()->isDoubleTy() || G.getValueType()->isFloatTy()){
                 GlobalVariables[Var] = true;
+                DataFlowValues[Var] = new DataFlowValue();
             }
         }
     }

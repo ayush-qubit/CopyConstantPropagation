@@ -10,15 +10,12 @@
 #include <string>
 #include <unordered_map>
 
-#define REDB "\033[1;91m"
-#define RST "\033[0;m"
-
-typedef std::map<llvm::Value *,DataFlowValue *> ForwardDataType;
+typedef std::unordered_map<llvm::Value *,DataFlowValue *> ForwardDataType;
 
 class CopyConstant : public Analysis<ForwardDataType,NoAnalysisType>{
     private:
     ForwardDataType FormalParameterValues;
-    map<llvm::Value *,bool> GlobalVariables;
+    std::unordered_map<llvm::Value *,bool> GlobalVariables;
     public:
     CopyConstant(bool);
     CopyConstant(bool,string);

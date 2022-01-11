@@ -5,10 +5,10 @@ int a,b;
 void foo(){
 	a=b;
 }
-
+void foo1(){
+    b = a;
+}
 int main(){
 	a=10;
-	foo();
-	b=20;
-	foo();
+    foo1();
 }
