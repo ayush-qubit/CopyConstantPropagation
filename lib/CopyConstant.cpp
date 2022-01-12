@@ -158,11 +158,11 @@ std::pair<ForwardDataType,NoAnalysisType> CopyConstant::CallInflowFunction(int l
     // for(auto p : ArgumentValues){
     //     FormalParameterValues[p.first] = p.second;
     // }
-//    outs() << "\n";
-//    outs() << "CALLINFLOW CALLED" << "\n";
+//    (*out) << "\n";
+//    (*out) << "CALLINFLOW CALLED" << "\n";
 //    printDataFlowValuesForward(a1);
     a1 = getPurelyGlobalComponentForward(a1);
-//    outs() << "\n";
+//    (*out) << "\n";
     return make_pair(a1,d1);
 }
 
@@ -240,21 +240,21 @@ ForwardDataType CopyConstant::getPurelyLocalComponentForward(ForwardDataType dfv
 
 void CopyConstant::printDataFlowValuesForward(ForwardDataType dfv) {
     for(auto p : dfv){
-        outs() << "(";
-        outs() << p.first->getName() << "=" << *p.second;
-        outs() << ")";
-        outs() << ",";
+        (*out) << "(";
+        (*out) << p.first->getName() << "=" << *p.second;
+        (*out) << ")";
+        (*out) << ",";
     }
-    outs() << "\n";
+    (*out) << "\n";
 }
 
 void CopyConstant::findGlobalVariables(llvm::Instruction *I) {
-//    outs() << "\nFINDING GLOBAL VARIABLES: ";
-//    outs() << *I << "\n";
+//    (*out) << "\nFINDING GLOBAL VARIABLES: ";
+//    (*out) << *I << "\n";
     for(llvm::Value *ValOp : I->operands()){
         if(isa<llvm::GlobalValue>(ValOp)){
             GlobalVariables[ValOp] = true;
-//            outs() << ValOp->getName() << "\n";
+//            (*out) << ValOp->getName() << "\n";
         }
     }
 }
