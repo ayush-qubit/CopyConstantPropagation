@@ -11,11 +11,12 @@
 #include <ios>
 #include <fstream>
 #include <string>
+#include <iomanip>
 
 using namespace llvm;
 using namespace std::chrono;
 
-void process_mem_usage(double& vm_usage, double& resident_set)
+void process_mem_usage(float& vm_usage, float& resident_set)
 {
     using std::ios_base;
     using std::ifstream;
@@ -46,10 +47,16 @@ void process_mem_usage(double& vm_usage, double& resident_set)
                 >> O >> itrealvalue >> starttime >> vsize >> rss; // don't care about the rest
 
     stat_stream.close();
-
     long page_size_kb = sysconf(_SC_PAGE_SIZE) / 1024; // in case x86-64 is configured to use 2MB pages
     vm_usage     = vsize / 1024.0;
     resident_set = rss * page_size_kb;
+}
+
+void getMemory(float memory){
+    cout << fixed;
+    cout<< setprecision(6);
+    cout << memory/1024.0;
+    cout << " MB\n";
 }
 
 int main(int argc, char **argv){
@@ -73,12 +80,13 @@ int main(int argc, char **argv){
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<seconds>(stop - start);
     CC.printContext();
-    double vm, rss;
+    float vm, rss;
     process_mem_usage(vm, rss);
     outs() << "\n";
     outs() << "Time taken by analysis: " << duration.count() << " seconds" << "\n";
     outs() << "Total number of contexts created: " << CC.getNumberOfContexts() << "\n";
     outs() << "Context label counter: " << CC.getContextLabelCounter() << "\n";
-    llvm::outs() << "Memory consume: " << vm << " KB" << "\n";
+    llvm::outs() << "Memory consume: ";
+    getMemory(vm);
     return 0;
 }
