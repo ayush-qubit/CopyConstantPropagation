@@ -11,7 +11,7 @@ CopyConstant::CopyConstant(bool debug,string fileName) : Analysis(debug,fileName
 
 
 ForwardDataType CopyConstant::computeOutFromIn(llvm::Instruction &I) {
-    findGlobalVariables(&I);
+//    findGlobalVariables(&I);
     if(isa<llvm::StoreInst>(&I)){
         return computeOutFromIn(dyn_cast<llvm::StoreInst>(&I));
     } else if(isa<llvm::LoadInst>(&I)){
@@ -70,8 +70,6 @@ ForwardDataType CopyConstant::computeOutFromIn(llvm::LoadInst *I){
 
 ForwardDataType CopyConstant::computeOutFromIn(llvm::GetElementPtrInst *I) {
     ForwardDataType DataFlowValues = getForwardComponentAtInOfThisInstruction(*I);
-//    llvm::Value *Left = dyn_cast<llvm::Value>(I);
-//    DataFlowValues[Left] = new DataFlowValue();
     return DataFlowValues;
 }
 
@@ -117,23 +115,10 @@ ForwardDataType CopyConstant::computeOutFromIn(llvm::PHINode *I) {
 
 ForwardDataType CopyConstant::performMeetForward(ForwardDataType dfv1,ForwardDataType dfv2) {
     ForwardDataType DataFlowValues;
-    for(auto p : dfv1){
-        if(dfv2.find(p.first) != dfv2.end()){
-            // DataFlowValue result = meet(dfv1[p.first],dfv2[p.first]);
-            DataFlowValues[p.first] = meet(dfv1[p.first],dfv2[p.first]);
-        }
-        else{
-            DataFlowValues[p.first] = dfv1[p.first];
-        }
-    }
+    DataFlowValues = dfv1;
     for(auto p : dfv2){
-        if(dfv1.find(p.first) != dfv1.end()){
-            // DataFlowValue result = meet(dfv1[p.first],dfv2[p.first]);
-            DataFlowValues[p.first] = meet(dfv1[p.first],dfv2[p.first]);
-        }
-        else{
-            DataFlowValues[p.first] = dfv2[p.first];
-        }
+        auto result = dfv1[p.first];
+        DataFlowValues[p.first] = meet(result,p.second);
     }
     return DataFlowValues;
 }
@@ -200,18 +185,7 @@ ForwardDataType CopyConstant::getInitialisationValueForward() {
 
 bool CopyConstant::EqualDataFlowValuesForward(ForwardDataType dfv1, ForwardDataType dfv2) {
     for(auto p : dfv1){
-        if(dfv2.find(p.first) == dfv2.end()){
-            return false;
-        }
-        else if(*dfv1[p.first] != *dfv2[p.first]){
-            return false;
-        }
-    }
-    for(auto p : dfv2){
-        if(dfv1.find(p.first) == dfv1.end()){
-            return false;
-        }
-        else if(*dfv1[p.first] != *dfv2[p.first]){
+        if(*dfv2[p.first] != *dfv1[p.first]){
             return false;
         }
     }
@@ -249,12 +223,9 @@ void CopyConstant::printDataFlowValuesForward(ForwardDataType dfv) {
 }
 
 void CopyConstant::findGlobalVariables(llvm::Instruction *I) {
-//    (*out) << "\nFINDING GLOBAL VARIABLES: ";
-//    (*out) << *I << "\n";
     for(llvm::Value *ValOp : I->operands()){
         if(isa<llvm::GlobalValue>(ValOp)){
             GlobalVariables[ValOp] = true;
-//            (*out) << ValOp->getName() << "\n";
         }
     }
 }
