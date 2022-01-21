@@ -9,13 +9,14 @@
 #include <map>
 #include <string>
 #include <unordered_map>
+#include <unordered_set>
 
 typedef std::unordered_map<llvm::Value *,DataFlowValue *> ForwardDataType;
 
 class CopyConstant : public Analysis<ForwardDataType,NoAnalysisType>{
     private:
     ForwardDataType FormalParameterValues;
-    std::unordered_map<llvm::Value *,bool> GlobalVariables;
+    std::unordered_set<llvm::Value*> GlobalVariables;
     public:
     CopyConstant(bool);
     CopyConstant(bool,string);
@@ -41,6 +42,7 @@ class CopyConstant : public Analysis<ForwardDataType,NoAnalysisType>{
     void findGlobalVariables(llvm::Instruction*);
     llvm::CallInst *getCallInstruction(llvm::BasicBlock *);
     bool isFormalParameter(llvm::Value *);
+    int GlobalVariableCount();
 };
 
 #endif

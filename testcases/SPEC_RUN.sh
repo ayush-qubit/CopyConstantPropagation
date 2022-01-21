@@ -16,6 +16,14 @@ do
 	echo -e "${REDB}==============================Running Analysis================================${REDB} \n"
 	FILENAME=$(basename $FILE .ll)
 	echo -e $FILENAME
+	if [[ $FILENAME == "gobmk" ]]; then
+		#statements
+		continue;
+	fi
+	if [[ $FILENAME == "sjeng" ]]; then
+		#statements
+		continue;
+	fi
 	$DRIVER $FILE
 	# echo $FILE
 	echo -e "\n"
