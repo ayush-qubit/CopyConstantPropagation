@@ -4,7 +4,7 @@
 #include "llvm/IR/Function.h"
 #include "llvm/IR/Instruction.h"
 #include "llvm/Support/Debug.h"
-#include "vasco/Analysis.h"
+#include "Analysis.h"
 #include "DataFlowValue.h"
 #include <map>
 #include <string>
@@ -18,20 +18,20 @@ class CopyConstant : public Analysis<ForwardDataType,NoAnalysisType>{
     ForwardDataType FormalParameterValues;
     std::unordered_set<llvm::Value*> GlobalVariables;
     public:
-    CopyConstant(bool);
-    CopyConstant(bool,string);
+    explicit CopyConstant(bool);
+    CopyConstant(bool, const string &);
     ForwardDataType computeOutFromIn(llvm::Instruction &) override;
     ForwardDataType getBoundaryInformationForward() override;
     ForwardDataType getInitialisationValueForward() override;
     ForwardDataType performMeetForward(ForwardDataType, ForwardDataType ) override;
-    bool EqualDataFlowValuesForward(ForwardDataType, ForwardDataType) override;
-    ForwardDataType getPurelyGlobalComponentForward(ForwardDataType) override;
-    ForwardDataType getPurelyLocalComponentForward(ForwardDataType) override;
+    bool EqualDataFlowValuesForward(const ForwardDataType&, const ForwardDataType&) const override;
+    ForwardDataType getPurelyGlobalComponentForward(const ForwardDataType &) const override;
+    ForwardDataType getPurelyLocalComponentForward(const ForwardDataType&) const override;
 
     std::pair<ForwardDataType,NoAnalysisType> CallInflowFunction(int, llvm::Function*, llvm::BasicBlock*,ForwardDataType,NoAnalysisType) override;
     std::pair<ForwardDataType,NoAnalysisType> CallOutflowFunction(int, llvm::Function*, llvm::BasicBlock*, ForwardDataType, NoAnalysisType, ForwardDataType, NoAnalysisType) override;
-    
-    void printDataFlowValuesForward(ForwardDataType) override;
+
+    void printDataFlowValuesForward(const ForwardDataType&) const override;
 
     ForwardDataType computeOutFromIn(llvm::AllocaInst *);
     ForwardDataType computeOutFromIn(llvm::StoreInst *);

@@ -4,6 +4,7 @@ set_target_properties(Driver PROPERTIES
     COMPILE_FLAGS "-std=c++14 -fno-rtti"
 )
 include_directories(${PROJECT_SOURCE_DIR}/include)
+include_directories(${PROJECT_SOURCE_DIR}/vasco)
 
 llvm_config (Driver ${LLVM_LINK_COMPONENTS})
 

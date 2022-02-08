@@ -3,16 +3,8 @@ source_filename = "./inputs/test2.c"
 target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-pc-linux-gnu"
 
-@b = dso_local global i32 0, align 4
 @a = dso_local global i32 0, align 4
-
-; Function Attrs: noinline nounwind uwtable
-define dso_local void @foo() #0 {
-entry:
-  %i = load i32, i32* @b, align 4
-  store i32 %i, i32* @a, align 4
-  ret void
-}
+@b = dso_local global i32 0, align 4
 
 ; Function Attrs: noinline nounwind uwtable
 define dso_local void @foo1() #0 {
@@ -36,4 +28,4 @@ attributes #0 = { noinline nounwind uwtable "disable-tail-calls"="false" "frame-
 !llvm.ident = !{!1}
 
 !0 = !{i32 1, !"wchar_size", i32 4}
-!1 = !{!"Ubuntu clang version 12.0.1-8build1"}
+!1 = !{!"Ubuntu clang version 12.0.1-++20211029101322+fed41342a82f-1~exp1~20211029221816.4"}

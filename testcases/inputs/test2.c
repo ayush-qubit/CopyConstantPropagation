@@ -2,9 +2,6 @@
 
 int a,b;
 
-void foo(){
-	a=b;
-}
 void foo1(){
     b = a;
 }
