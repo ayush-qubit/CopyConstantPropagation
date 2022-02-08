@@ -20,10 +20,10 @@ do
 	 	#statements
 	 	continue;
 	 fi
-	if [[ $FILENAME == "sjeng" ]]; then
-		#statements
-		continue;
-	fi
+#	if [[ $FILENAME == "sjeng" ]]; then
+#		#statements
+#		continue;
+#	fi
 	$DRIVER $FILE
 	# echo $FILE
 	echo -e "\n"
