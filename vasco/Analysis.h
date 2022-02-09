@@ -250,11 +250,11 @@ public:
 
     B getBackwardOutflowForThisContext(int);
 
-    void setForwardInflowForThisContext(int, F);
+    void setForwardInflowForThisContext(int, const F &);
 
     void setBackwardInflowForThisContext(int, B);
 
-    void setForwardOutflowForThisContext(int, F);
+    void setForwardOutflowForThisContext(int, const F &);
 
     void setBackwardOutflowForThisContext(int, B);
 
@@ -673,7 +673,7 @@ B Analysis<F, B>::getBackwardOutflowForThisContext(int context_label) {
 
 
 template<class F, class B>
-void Analysis<F, B>::setForwardInflowForThisContext(int context_label, F forward_inflow) {
+void Analysis<F, B>::setForwardInflowForThisContext(int context_label, const F& forward_inflow) {
 //    context_label_to_context_object_map[context_label].second.first.first=forward_inflow;
     context_label_to_context_object_map[context_label]->setForwardInflow(forward_inflow);
 }
@@ -685,7 +685,7 @@ void Analysis<F, B>::setBackwardInflowForThisContext(int context_label, B backwa
 }
 
 template<class F, class B>
-void Analysis<F, B>::setForwardOutflowForThisContext(int context_label, F forward_outflow) {
+void Analysis<F, B>::setForwardOutflowForThisContext(int context_label, const F& forward_outflow) {
 //    context_label_to_context_object_map[context_label].second.second.first=forward_outflow;
     context_label_to_context_object_map[context_label]->setForwardOutflow(forward_outflow);
 }
