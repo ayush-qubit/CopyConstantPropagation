@@ -221,11 +221,11 @@ public:
 
     B getBackwardComponentAtOutOfThisInstruction(Instruction &I);
 
-    void setForwardComponentAtInOfThisInstruction(Instruction *I, F in_value);
+    void setForwardComponentAtInOfThisInstruction(Instruction *I, const F& in_value);
 
     void setBackwardComponentAtInOfThisInstruction(Instruction *I, B in_value);
 
-    void setForwardComponentAtOutOfThisInstruction(Instruction *I, F out_value);
+    void setForwardComponentAtOutOfThisInstruction(Instruction *I, const F& out_value);
 
     void setBackwardComponentAtOutOfThisInstruction(Instruction *I, B out_value);
 
@@ -585,13 +585,13 @@ B Analysis<F, B>::getBackwardComponentAtOutOfThisInstruction(Instruction &I) {
 }
 
 template<class F, class B>
-void Analysis<F, B>::setForwardComponentAtInOfThisInstruction(Instruction *I, F in_value) {
+void Analysis<F, B>::setForwardComponentAtInOfThisInstruction(Instruction *I,const F& in_value) {
     int label = getProcessingContextLabel();
     IN[label][I].first = in_value;
 }
 
 template<class F, class B>
-void Analysis<F, B>::setForwardComponentAtOutOfThisInstruction(Instruction *I, F out_value) {
+void Analysis<F, B>::setForwardComponentAtOutOfThisInstruction(Instruction *I, const F& out_value) {
     int label = getProcessingContextLabel();
     OUT[label][I].first = out_value;
 }
