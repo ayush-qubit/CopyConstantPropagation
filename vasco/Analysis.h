@@ -233,9 +233,9 @@ public:
 
     pair<F, B> getOut(int, llvm::BasicBlock *);
 
-    void setForwardIn(int, llvm::BasicBlock *, F);
+    void setForwardIn(int, llvm::BasicBlock *, const F &);
 
-    void setForwardOut(int, llvm::BasicBlock *, F);
+    void setForwardOut(int, llvm::BasicBlock *, const F &);
 
     void setBackwardIn(int, llvm::BasicBlock *, B);
 
@@ -622,12 +622,12 @@ pair<F, B> Analysis<F, B>::getOut(int label, llvm::BasicBlock *BB) {
 }
 
 template<class F, class B>
-void Analysis<F, B>::setForwardIn(int label, llvm::BasicBlock *BB, F dataflowvalue) {
+void Analysis<F, B>::setForwardIn(int label, llvm::BasicBlock *BB, const F& dataflowvalue) {
     IN[label][&(*(BB->begin()))].first = dataflowvalue;
 }
 
 template<class F, class B>
-void Analysis<F, B>::setForwardOut(int label, llvm::BasicBlock *BB, F dataflowvalue) {
+void Analysis<F, B>::setForwardOut(int label, llvm::BasicBlock *BB, const F& dataflowvalue) {
     OUT[label][&(BB->back())].first = dataflowvalue;
 }
 
