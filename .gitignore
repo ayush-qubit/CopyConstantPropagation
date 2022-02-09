@@ -4,3 +4,4 @@ build/
 SPEC/
 *.ll.txt
 *SPEC_RUN.sh
+CopyConstantPropagation/testcases/SPEC_RUN.sh
