@@ -23,6 +23,7 @@
 #include <unistd.h>
 #include <ios>
 #include <iomanip>
+#include "chrono"
 
 #include "Context.h"
 #include "Worklist.h"
@@ -34,6 +35,7 @@
 
 using namespace llvm;
 using namespace std;
+using namespace std::chrono;
 enum NoAnalysisType {
     NoAnalyisInThisDirection
 };
@@ -716,11 +718,16 @@ void Analysis<F, B>::doAnalysis(Module &M) {
     // ======================================================================================
 
     //====================================SPLITTING========================================
+    auto start = high_resolution_clock::now();
     for (Function &function: M) {
         if (function.size() > 0) {
             performSplittingBB(function);
         }
     }
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<seconds>(stop - start);
+    llvm::outs() << "Time taken in Splitting Basic Block : " << duration.count() << " seconds" << "\n";
+    start = high_resolution_clock::now();
     int i = 0;
     for (Function &function: M) {
         if (function.getName() == "main") {
@@ -790,6 +797,9 @@ void Analysis<F, B>::doAnalysis(Module &M) {
 //            iteration++;
 //        }
     }
+    stop = high_resolution_clock::now();
+    duration = duration_cast<seconds>(stop - start);
+    llvm::outs() << "Time taken by analysis: " << duration.count() << " seconds" << "\n";
 }
 
 
