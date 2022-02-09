@@ -196,7 +196,7 @@ public:
 //    B NormalFlowFunctionBackward(pair<int, BasicBlock *>);
 
 //    int check_if_context_already_exists(pair<Function*,pair<pair<F,B>,pair<F,B>>> new_context_object);
-    int check_if_context_already_exists(llvm::Function *, pair<F, B>, pair<F, B>);
+    int check_if_context_already_exists(llvm::Function *, const pair<F, B> &, const pair<F, B> &);
 
     void drawSuperGraph(Module &M);
 
@@ -755,21 +755,15 @@ void Analysis<F, B>::doAnalysis(Module &M) {
         //backward analysis
         direction = "backward";
         setCurrentAnalysisDirection(2);
-        int backward_iteration_count = 0;
-        int iteration = 1;
         while (not backward_worklist.empty()) {
 //            doAnalysisBackward();
-            backward_iteration_count++;
         }
     } else if (std::is_same<B, NoAnalysisType>::value) {
         //forward analysis
         direction = "forward";
         setCurrentAnalysisDirection(1);
-        int forward_iteration_count = 0;
-        int iteration = 1;
         while (not forward_worklist.empty()) {
             doAnalysisForward();
-            forward_iteration_count++;
         }
     } else {
         direction = "bidirectional";
@@ -1461,7 +1455,7 @@ F Analysis<F, B>::NormalFlowFunctionForward(pair<int, BasicBlock *> current_pair
 
 
 template<class F, class B>
-int Analysis<F, B>::check_if_context_already_exists(llvm::Function *function, pair<F, B> Inflow, pair<F, B> Outflow) {
+int Analysis<F, B>::check_if_context_already_exists(llvm::Function *function, const pair<F, B>& Inflow, const pair<F, B>& Outflow) {
     if (std::is_same<B, NoAnalysisType>::value) {
         //forward only
         for (auto set_itr:ProcedureContext) {
