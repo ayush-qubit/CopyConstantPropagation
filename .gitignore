@@ -3,4 +3,4 @@ build/
 *.ll
 SPEC/
 *.ll.txt
-SPEC_RUN.sh
+*SPEC_RUN.sh
