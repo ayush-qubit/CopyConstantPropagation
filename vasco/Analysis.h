@@ -1,7 +1,3 @@
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wshadow"
-#pragma ide diagnostic ignored "readability-container-size-empty"
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 #ifndef ANALYSIS_H
 #define ANALYSIS_H
 
@@ -157,8 +153,8 @@ protected:
     Worklist<pair<int,BasicBlock *>,HashFunction> backward_worklist, forward_worklist;
 
     // mapping to check which entries are already part of the worklist (key,value)
-    unordered_map<pair<int, BasicBlock *>, bool, HashFunction> forward_worklist_contains_this_entry; // TODO can be changed to set
-    unordered_map<pair<int, BasicBlock *>, bool, HashFunction> backward_worklist_contains_this_entry; // TODO can be changed to set
+//    unordered_map<pair<int, BasicBlock *>, bool, HashFunction> forward_worklist_contains_this_entry;
+//    unordered_map<pair<int, BasicBlock *>, bool, HashFunction> backward_worklist_contains_this_entry;
 
     // mapping from (context label,call site) to target context label
     unordered_map<pair<int, Instruction *>, int, HashFunction> context_transition_graph; //graph
@@ -191,11 +187,11 @@ public:
 
     void doAnalysisForward();
 
-    void doAnalysisBackward();
+//    void doAnalysisBackward();
 
     F NormalFlowFunctionForward(pair<int, BasicBlock *>);
 
-    B NormalFlowFunctionBackward(pair<int, BasicBlock *>);
+//    B NormalFlowFunctionBackward(pair<int, BasicBlock *>);
 
 //    int check_if_context_already_exists(pair<Function*,pair<pair<F,B>,pair<F,B>>> new_context_object);
     int check_if_context_already_exists(llvm::Function *, pair<F, B>, pair<F, B>);
@@ -725,7 +721,6 @@ void Analysis<F, B>::doAnalysis(Module &M) {
             performSplittingBB(function);
         }
     }
-
     int i = 0;
     for (Function &function: M) {
         if (function.getName() == "main") {
@@ -1561,17 +1556,17 @@ int Analysis<F, B>::check_if_context_already_exists(llvm::Function *function, pa
 
 template<class F, class B>
 void Analysis<F, B>::printWorklistMaps() {
-    llvm::outs() << REDB << "\n-----------------------------------------";
-    llvm::outs() << WHITEB;
-    for (auto x:backward_worklist_contains_this_entry) {
-        llvm::outs() << "\n";
-        llvm::outs() << x.first.first << " ";
-        BasicBlock *bb = x.first.second;
-        bb->printAsOperand(llvm::outs(), false);
-        llvm::outs() << x.second;
-    }
-    llvm::outs() << REDB << "\n-----------------------------------------";
-    llvm::outs() << RST;
+//    llvm::outs() << REDB << "\n-----------------------------------------";
+//    llvm::outs() << WHITEB;
+//    for (auto x:backward_worklist_contains_this_entry) {
+//        llvm::outs() << "\n";
+//        llvm::outs() << x.first.first << " ";
+//        BasicBlock *bb = x.first.second;
+//        bb->printAsOperand(llvm::outs(), false);
+//        llvm::outs() << x.second;
+//    }
+//    llvm::outs() << REDB << "\n-----------------------------------------";
+//    llvm::outs() << RST;
 }
 
 //template<class F, class B>
