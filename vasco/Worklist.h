@@ -8,7 +8,7 @@ private:
     std::stack<Value> mStack;
     std::unordered_set<Value, KeyHash> mSet;
 public:
-    Worklist() : mStack(), mSet(10000) {}
+    Worklist() : mStack(), mSet() {}
 
     bool empty() const { return mStack.empty(); }
 
