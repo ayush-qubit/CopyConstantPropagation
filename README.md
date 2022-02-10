@@ -6,8 +6,8 @@ Implementation of CopyConstant Propagation at interprocedural level using VASCO 
 
 Run the following command in the project directory. Before running following command VASCO must be installed.
 
-'''bash
+```bash
 mkdir build
 cd build
 cmake .. && make
-'''
+```
