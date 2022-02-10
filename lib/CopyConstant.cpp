@@ -144,11 +144,11 @@ std::pair<ForwardDataType,NoAnalysisType> CopyConstant::CallInflowFunction(int l
     // for(auto p : ArgumentValues){
     //     FormalParameterValues[p.first] = p.second;
     // }
-//    (*out) << "\n";
-//    (*out) << "CALLINFLOW CALLED" << "\n";
+//    llvm::outs() << "\n";
+//    llvm::outs() << "CALLINFLOW CALLED" << "\n";
 //    printDataFlowValuesForward(a1);
     a1 = getPurelyGlobalComponentForward(a1);
-//    (*out) << "\n";
+//    llvm::outs() << "\n";
     return make_pair(a1,d1);
 }
 
@@ -216,12 +216,12 @@ ForwardDataType CopyConstant::getPurelyLocalComponentForward(ForwardDataType dfv
 
 void CopyConstant::printDataFlowValuesForward(ForwardDataType dfv) {
     for(auto p : dfv){
-        (*out) << "(";
-        (*out) << p.first->getName() << "=" << *p.second;
-        (*out) << ")";
-        (*out) << ",";
+        llvm::outs() << "(";
+        llvm::outs() << p.first->getName() << "=" << *p.second;
+        llvm::outs() << ")";
+        llvm::outs() << ",";
     }
-    (*out) << "\n";
+    llvm::outs() << "\n";
 }
 
 void CopyConstant::findGlobalVariables(llvm::Instruction *I) {

@@ -2,19 +2,18 @@
 ==================================================================================================
 LABEL: 1
 FUNCTION NAME: foo1
-INFLOW VALUE: (a=10),(b=⊤),
-OUTFLOW VALUE: (b=10),(a=10),
+INFLOW VALUE: (b=⊤),(a=10),
+OUTFLOW VALUE: (a=10),(b=10),
 
 ==================================================================================================
 ==================================================================================================
 LABEL: 0
 FUNCTION NAME: main
 INFLOW VALUE: (a=⊤),(b=⊤),
-OUTFLOW VALUE: (a=10),(b=10),
+OUTFLOW VALUE: (b=10),(a=10),
 
 ==================================================================================================
 
 Time taken by analysis: 0 seconds
 Total number of contexts created: 2
-Context label counter: 1
-Memory consume: 14.257812 MB
+Memory consume: 14.511719 MB
