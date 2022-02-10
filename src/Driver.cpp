@@ -5,13 +5,11 @@
 #include "llvm/Support/SourceMgr.h"
 #include "llvm/Transforms/Utils/UnifyFunctionExitNodes.h"
 #include "CopyConstant.h"
-#include "chrono"
 
 #include <string>
 #include <iomanip>
 
 using namespace llvm;
-using namespace std::chrono;
 
 int main(int argc, char **argv) {
     if (argc < 1) {

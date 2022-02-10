@@ -277,7 +277,7 @@ public:
 
     virtual F getBoundaryInformationForward();//{}
     virtual F getInitialisationValueForward();//{}
-    virtual F performMeetForward(F d1, F d2);//{}
+    virtual F performMeetForward(const F& d1, const F& d2) const;//{}
     virtual bool EqualDataFlowValuesForward(const F &d1, const F &d2) const;//{}
     virtual F getPurelyLocalComponentForward(const F& dfv) const;
 
@@ -437,7 +437,7 @@ B Analysis<F, B>::getInitialisationValueBackward() {
 }
 
 template<class F, class B>
-F Analysis<F, B>::performMeetForward(F d1, F d2) {
+F Analysis<F, B>::performMeetForward(const F& d1, const F& d2) const {
     llvm::outs() << "\nThis function performMeetForward() has not been implemented. EXITING !!\n";
     exit(-1);
 }

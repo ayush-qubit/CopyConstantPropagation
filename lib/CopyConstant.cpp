@@ -111,12 +111,16 @@ ForwardDataType CopyConstant::computeOutFromIn(llvm::PHINode *I) {
     return DataFlowValues;
 }
 
-ForwardDataType CopyConstant::performMeetForward(ForwardDataType dfv1, ForwardDataType dfv2) {
+ForwardDataType CopyConstant::performMeetForward(const ForwardDataType& dfv1, const ForwardDataType& dfv2) const {
     ForwardDataType DataFlowValues;
     DataFlowValues = dfv1;
-    for (auto p : dfv2) {
-        auto result = dfv1[p.first];
-        DataFlowValues[p.first] = meet(result, p.second);
+    for (auto& p : dfv2) {
+        auto result = dfv1.find(p.first);
+        if(result == dfv1.end()){
+            DataFlowValues[p.first] = p.second;
+        } else{
+            DataFlowValues[p.first] = meet(result->second, p.second);
+        }
     }
     return DataFlowValues;
 }
