@@ -211,7 +211,7 @@ bool CopyConstant::EqualDataFlowValuesForward(const ForwardDataType &dfv1, const
 
 ForwardDataType CopyConstant::getPurelyGlobalComponentForward(const ForwardDataType& dfv) const {
     ForwardDataType DataFlowValues;
-    for (auto p : dfv) {
+    for (auto& p : dfv) {
         if (GlobalVariables.find(p.first) != GlobalVariables.end()) {
             DataFlowValues[p.first] = p.second;
         }
@@ -221,7 +221,7 @@ ForwardDataType CopyConstant::getPurelyGlobalComponentForward(const ForwardDataT
 
 ForwardDataType CopyConstant::getPurelyLocalComponentForward(const ForwardDataType &dfv) const {
     ForwardDataType DataFlowValues;
-    for (auto p : dfv) {
+    for (auto& p : dfv) {
         if (GlobalVariables.find(p.first) == GlobalVariables.end()) {
             DataFlowValues[p.first] = p.second;
         }
@@ -230,7 +230,7 @@ ForwardDataType CopyConstant::getPurelyLocalComponentForward(const ForwardDataTy
 }
 
 void CopyConstant::printDataFlowValuesForward(const ForwardDataType &dfv) const {
-    for (auto p : dfv) {
+    for (auto& p : dfv) {
         llvm::outs() << "(";
         llvm::outs() << p.first->getName() << "=" << *p.second;
         llvm::outs() << ")";

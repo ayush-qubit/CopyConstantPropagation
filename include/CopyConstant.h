@@ -23,7 +23,7 @@ class CopyConstant : public Analysis<ForwardDataType,NoAnalysisType>{
     ForwardDataType computeOutFromIn(llvm::Instruction &) override;
     ForwardDataType getBoundaryInformationForward() override;
     ForwardDataType getInitialisationValueForward() override;
-    ForwardDataType performMeetForward(const ForwardDataType &, const ForwardDataType& ) const override;
+    ForwardDataType performMeetForward(const ForwardDataType &, const ForwardDataType & ) const override;
     bool EqualDataFlowValuesForward(const ForwardDataType&, const ForwardDataType&) const override;
     ForwardDataType getPurelyGlobalComponentForward(const ForwardDataType &) const override;
     ForwardDataType getPurelyLocalComponentForward(const ForwardDataType&) const override;
