@@ -185,7 +185,7 @@ public:
 
 //    void INIT_CONTEXT(pair<Function*,pair<pair<F,B>,pair<F,B>>> context_object);
 //    void INIT_CONTEXT(Context<F,B>);
-    void INIT_CONTEXT(llvm::Function *, std::pair<F, B>, std::pair<F, B>);
+    void INIT_CONTEXT(llvm::Function *, const std::pair<F, B> &, const std::pair<F, B> &);
 
     void doAnalysisForward();
 
@@ -798,7 +798,7 @@ void Analysis<F, B>::doAnalysis(Module &M) {
 
 
 template<class F, class B>
-void Analysis<F, B>::INIT_CONTEXT(llvm::Function *function, std::pair<F, B> Inflow, std::pair<F, B> Outflow) {
+void Analysis<F, B>::INIT_CONTEXT(llvm::Function *function, const std::pair<F, B>& Inflow, const std::pair<F, B>& Outflow) {
     context_label_counter++;
     Context<F,B> *context_object = new Context<F,B>(context_label_counter,function,Inflow,Outflow);
     int current_context_label = context_object->getLabel();
