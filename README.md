@@ -15,6 +15,6 @@ cmake .. && make
 # Run instruction
 ```bash
 cd testcases
-./run.sh ./inputs/test<number>.c
+./run.sh ./inputs/test1.c
 ```
-An output txt file in the folder testcases/outputs/test<number>.ll.txt is created contains output of the analysis
+An output txt file in the folder testcases/outputs/test1.ll.txt is created contains output of the analysis
