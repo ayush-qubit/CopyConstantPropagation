@@ -41,8 +41,6 @@ ForwardDataType CopyConstant::computeOutFromIn(llvm::StoreInst *I) {
         DataFlowValues[Left] = new DataFlowValue(ConstInt);
     } else if (llvm::ConstantFP *Constfp = dyn_cast<llvm::ConstantFP>(Right)) {
         DataFlowValues[Left] = new DataFlowValue(Constfp);
-    } else if (this->isFormalParameter(Right)) {
-        DataFlowValues[Left] = FormalParameterValues[Right];
     } else {
         if (DataFlowValues.find(Right) == DataFlowValues.end()) {
             return DataFlowValues;
@@ -255,10 +253,6 @@ llvm::CallInst *CopyConstant::getCallInstruction(llvm::BasicBlock *BB) {
         }
     }
     return nullptr;
-}
-
-bool CopyConstant::isFormalParameter(llvm::Value *valOp) {
-    return FormalParameterValues.find(valOp) != FormalParameterValues.end();
 }
 
 int CopyConstant::GlobalVariableCount() {

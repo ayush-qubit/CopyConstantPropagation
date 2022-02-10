@@ -15,7 +15,6 @@ typedef std::unordered_map<llvm::Value *,DataFlowValue *> ForwardDataType;
 
 class CopyConstant : public Analysis<ForwardDataType,NoAnalysisType>{
     private:
-    ForwardDataType FormalParameterValues;
     std::unordered_set<llvm::Value*> GlobalVariables;
     public:
     explicit CopyConstant(bool);
@@ -41,7 +40,6 @@ class CopyConstant : public Analysis<ForwardDataType,NoAnalysisType>{
 
     void findGlobalVariables(llvm::Instruction*);
     llvm::CallInst *getCallInstruction(llvm::BasicBlock *);
-    bool isFormalParameter(llvm::Value *);
     int GlobalVariableCount();
 };
 
