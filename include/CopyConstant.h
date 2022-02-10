@@ -28,8 +28,8 @@ class CopyConstant : public Analysis<ForwardDataType,NoAnalysisType>{
     ForwardDataType getPurelyGlobalComponentForward(const ForwardDataType &) const override;
     ForwardDataType getPurelyLocalComponentForward(const ForwardDataType&) const override;
 
-    std::pair<ForwardDataType,NoAnalysisType> CallInflowFunction(int, llvm::Function*, llvm::BasicBlock*,ForwardDataType,NoAnalysisType) override;
-    std::pair<ForwardDataType,NoAnalysisType> CallOutflowFunction(int, llvm::Function*, llvm::BasicBlock*, ForwardDataType, NoAnalysisType, ForwardDataType, NoAnalysisType) override;
+    std::pair<ForwardDataType,NoAnalysisType> CallInflowFunction(int, llvm::Function*, llvm::BasicBlock*,const ForwardDataType &,const NoAnalysisType &) override;
+    std::pair<ForwardDataType,NoAnalysisType> CallOutflowFunction(int, llvm::Function*, llvm::BasicBlock*, const ForwardDataType &, const NoAnalysisType &, const ForwardDataType &, const NoAnalysisType &) override;
 
     void printDataFlowValuesForward(const ForwardDataType&) const override;
 

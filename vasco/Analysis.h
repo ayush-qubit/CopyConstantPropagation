@@ -266,9 +266,9 @@ public:
 
     void printContext();
 
-    virtual pair<F, B> CallInflowFunction(int, Function *, BasicBlock *, F, B);
+    virtual pair<F, B> CallInflowFunction(int, Function *, BasicBlock *, const F &, const B &);
 
-    virtual pair<F, B> CallOutflowFunction(int, Function *, BasicBlock *, F, B, F, B);
+    virtual pair<F, B> CallOutflowFunction(int, Function *, BasicBlock *, const F &, const B &, const F &, const B &);
 
 
     virtual void printResults() {}
@@ -546,15 +546,15 @@ void Analysis<F, B>::printModule(Module &M) {
 
 template<class F, class B>
 pair<F, B>
-Analysis<F, B>::CallInflowFunction(int context_label, Function *target_function, BasicBlock *bb, F a1, B d1) {
+Analysis<F, B>::CallInflowFunction(int context_label, Function *target_function, BasicBlock *bb, const F& a1, const B& d1) {
     llvm::outs() << "\nThis function CallInflowFunction() has not been implemented. EXITING !!\n";
     exit(-1);
 }
 
 template<class F, class B>
 pair<F, B>
-Analysis<F, B>::CallOutflowFunction(int context_label, Function *target_function, BasicBlock *bb, F a3, B d3, F a1,
-                                    B d1) {
+Analysis<F, B>::CallOutflowFunction(int context_label, Function *target_function, BasicBlock *bb, const F& a3, const B& d3, const F& a1,
+                                    const B& d1) {
     llvm::outs() << "\nThis function CallOutflowFunction() has not been implemented. EXITING !!\n";
     exit(-1);
 }

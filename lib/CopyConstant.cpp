@@ -122,8 +122,8 @@ ForwardDataType CopyConstant::performMeetForward(ForwardDataType dfv1, ForwardDa
 }
 
 std::pair<ForwardDataType, NoAnalysisType>
-CopyConstant::CallInflowFunction(int label, llvm::Function *F, llvm::BasicBlock *BB, ForwardDataType a1,
-                                 NoAnalysisType d1) {
+CopyConstant::CallInflowFunction(int label, llvm::Function *F, llvm::BasicBlock *BB, const ForwardDataType& a1,
+                                 const NoAnalysisType& d1) {
     // ForwardDataType ArgumentValues;
     // llvm::CallInst *CI = this->getCallInstruction(BB);
     // llvm::Function *CF = CI->getCalledFunction();
@@ -146,16 +146,18 @@ CopyConstant::CallInflowFunction(int label, llvm::Function *F, llvm::BasicBlock 
 //    (*out) << "\n";
 //    (*out) << "CALLINFLOW CALLED" << "\n";
 //    printDataFlowValuesForward(a1);
-    a1 = getPurelyGlobalComponentForward(a1);
+    ForwardDataType Dataflowvalues;
+    Dataflowvalues = getPurelyGlobalComponentForward(a1);
 //    (*out) << "\n";
-    return make_pair(a1, d1);
+    return make_pair(Dataflowvalues, d1);
 }
 
 std::pair<ForwardDataType, NoAnalysisType>
-CopyConstant::CallOutflowFunction(int label, llvm::Function *F, llvm::BasicBlock *BB, ForwardDataType a3,
-                                  NoAnalysisType d3, ForwardDataType a1, NoAnalysisType d1) {
-    a3 = getPurelyGlobalComponentForward(a3);
-    return make_pair(a3, d3);
+CopyConstant::CallOutflowFunction(int label, llvm::Function *F, llvm::BasicBlock *BB, const ForwardDataType& a3,
+                                  const NoAnalysisType& d3, const ForwardDataType& a1, const NoAnalysisType& d1) {
+    ForwardDataType Dataflowvalues;
+    Dataflowvalues = getPurelyGlobalComponentForward(a3);
+    return make_pair(Dataflowvalues, d3);
 }
 
 ForwardDataType CopyConstant::getBoundaryInformationForward() {

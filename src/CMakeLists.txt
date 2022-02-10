@@ -1,7 +1,7 @@
 set(LLVM_LINK_COMPONENTS core support irreader passes transformutils)
 add_executable(Driver Driver.cpp)
 set_target_properties(Driver PROPERTIES
-    COMPILE_FLAGS "-std=c++14 -O3 -fno-rtti"
+    COMPILE_FLAGS "-std=c++14 -O2 -fno-rtti"
 )
 include_directories(${PROJECT_SOURCE_DIR}/include)
 include_directories(${PROJECT_SOURCE_DIR}/vasco)
