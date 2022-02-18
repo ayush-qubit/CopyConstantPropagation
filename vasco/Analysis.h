@@ -810,6 +810,8 @@ void Analysis<F, B>::INIT_CONTEXT(llvm::Function *function, const std::pair<F, B
             llvm::outs() << "FUNCTION: " << function->getName() << "\n";
             llvm::outs() << "Inflow Value: ";
             printDataFlowValuesForward(Inflow.first);
+            llvm::outs() << "Outflow value: ";
+            printDataFlowValuesForward(getInitialisationValueForward());
         }
         //forward analysis
         context_label_to_context_object_map[current_context_label] = context_object;
@@ -1986,13 +1988,13 @@ void Analysis<F, B>::printContext() {
                 << "\n";
         auto context = context_label_to_context_object_map[label];
         llvm::outs() << "LABEL: " << label << "\n";
-        llvm::outs() << "FUNCTION NAME: " << context.getFunction()->getName() << "\n";
+        llvm::outs() << "FUNCTION NAME: " << context->getFunction()->getName() << "\n";
         llvm::outs() << "INFLOW VALUE: ";
-        printDataFlowValuesForward(context.getInflowValue().first);
-        printDataFlowValuesBackward(context.getInflowValue().second);
+        printDataFlowValuesForward(context->getInflowValue().first);
+        printDataFlowValuesBackward(context->getInflowValue().second);
         llvm::outs() << "OUTFLOW VALUE: ";
-        printDataFlowValuesForward(context.getOutflowValue().first);
-        printDataFlowValuesBackward(context.getOutflowValue().second);
+        printDataFlowValuesForward(context->getOutflowValue().first);
+        printDataFlowValuesBackward(context->getOutflowValue().second);
         llvm::outs() << "\n";
         llvm::outs()
                 << "=================================================================================================="

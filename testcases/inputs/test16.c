@@ -9,7 +9,6 @@ void foo(){
 }
 
 int main(){
-    foo();
     a = 10;
     b = 20;
     void (*fp)(void) = &foo;

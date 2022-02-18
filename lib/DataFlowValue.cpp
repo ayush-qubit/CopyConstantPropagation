@@ -60,6 +60,13 @@ bool DataFlowValue::isConcrete(){
 }
 
 DataFlowValue *meet(DataFlowValue *dfv1, DataFlowValue *dfv2){
+//    if(not (dfv1 || dfv2)){
+//        return NULL;
+//    } else if(not dfv1){
+//        return dfv2;
+//    } else if(not dfv2){
+//        return dfv1;
+//    }
     if(dfv1 == NULL || dfv2 == NULL){
         if(dfv1 == NULL){
             return dfv2;
