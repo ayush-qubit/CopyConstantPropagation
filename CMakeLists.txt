@@ -15,5 +15,8 @@ link_directories(${LLVM_LIBRARY_DIRS})
 #include_directories("/usr/local/include/vasco")
 include_directories("./vasco")
 
+add_library(Vasco SHARED IMPORTED)
+set_target_properties(Vasco PROPERTIES IMPORTED_LOCATION "/usr/local/lib/libDriver.so")
+
 add_subdirectory(lib)
 add_subdirectory(src)

@@ -725,8 +725,8 @@ void Analysis<F, B>::doAnalysis(Module &M) {
         }
     }
     auto stop = high_resolution_clock::now();
-    auto duration = duration_cast<seconds>(stop - start);
-    llvm::outs() << "Time taken in Splitting Basic Block : " << duration.count() << " seconds" << "\n";
+    auto duration = duration_cast<milliseconds>(stop - start);
+    llvm::outs() << "Time taken in Splitting Basic Block : " << duration.count() << " milliseconds" << "\n";
     start = high_resolution_clock::now();
     int i = 0;
     for (Function &function: M) {
@@ -792,8 +792,8 @@ void Analysis<F, B>::doAnalysis(Module &M) {
 //        }
     }
     stop = high_resolution_clock::now();
-    duration = duration_cast<seconds>(stop - start);
-    llvm::outs() << "Time taken by analysis: " << duration.count() << " seconds" << "\n";
+    duration = duration_cast<milliseconds>(stop - start);
+    llvm::outs() << "Time taken by analysis: " << duration.count() << " milliseconds" << "\n";
 }
 
 
@@ -1394,7 +1394,6 @@ void Analysis<F, B>::doAnalysisForward() {
             setForwardOutflowForThisContext(current_context_label, getPurelyGlobalComponentForward(
                     getOut(current_pair.first,
                            current_pair.second).first));//setting forward outflow CS_BB_OUT[current_pair].first
-//            context_label_to_context_object_map[current_context_label].second.second.first=getPurelyGlobalComponentForward(CS_BB_OUT[current_pair].first);//setting forward outflow
             bool flag = false;
             for (auto context_inst_pairs:context_transition_graph)//step 29
             {
@@ -1404,24 +1403,10 @@ void Analysis<F, B>::doAnalysisForward() {
                     BasicBlock *bb = context_inst_pairs.first.second->getParent();
                     pair<int, BasicBlock *> context_bb_pair = make_pair(context_inst_pairs.first.first, bb);
                     forward_worklist.workInsert(context_bb_pair);
-//                    if (!forward_worklist_contains_this_entry[context_bb_pair]) {
-//                        forward_worklist.push(context_bb_pair);
-//                        forward_worklist_contains_this_entry[context_bb_pair] = true;
-//                    }
                     if (direction == "bidirectional") {
                         backward_worklist.workInsert(context_bb_pair);
-//                        if (!backward_worklist_contains_this_entry[context_bb_pair]) {
-//                            backward_worklist.push(context_bb_pair);
-//                            backward_worklist_contains_this_entry[context_bb_pair] = true;
-//                        }
                     }
                 }
-                if (context_inst_pairs.first.first == current_context_label) {
-                    flag = true;
-                }
-            }
-            if (not flag) {
-//                freeMemory(current_context_label);
             }
         }
     }

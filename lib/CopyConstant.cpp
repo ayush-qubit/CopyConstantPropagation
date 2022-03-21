@@ -42,10 +42,15 @@ ForwardDataType CopyConstant::computeOutFromIn(llvm::StoreInst *I) {
     } else if (llvm::ConstantFP *Constfp = dyn_cast<llvm::ConstantFP>(Right)) {
         DataFlowValues[Left] = new DataFlowValue(Constfp);
     } else {
-        if (DataFlowValues.find(Right) == DataFlowValues.end()) {
+        auto result = DataFlowValues.find(Right);
+        if(result == DataFlowValues.end()) {
             return DataFlowValues;
         }
-        DataFlowValues[Left] = DataFlowValues[Right];
+        DataFlowValues[Left] = result->second;
+//        if (DataFlowValues.find(Right) == DataFlowValues.end()) {
+//            return DataFlowValues;
+//        }
+//        DataFlowValues[Left] = DataFlowValues[Right];
     }
     return DataFlowValues;
 }
@@ -54,13 +59,17 @@ ForwardDataType CopyConstant::computeOutFromIn(llvm::LoadInst *I) {
     ForwardDataType DataFlowValues = getForwardComponentAtInOfThisInstruction(*I);
     llvm::Value *Right = I->getOperand(0);
     llvm::Value *Left = dyn_cast<llvm::Value>(I);
-    if (DataFlowValues.find(Right) == DataFlowValues.end()) {
+    auto result = DataFlowValues.find(Right);
+    if(result == DataFlowValues.end()) {
+        return DataFlowValues;
+    }
+//    if (DataFlowValues.find(Right) == DataFlowValues.end()) {
 //        if (GlobalVariables.find(Right) != GlobalVariables.end()) {
 //            DataFlowValues[Left] = new DataFlowValue();
 //        }
-        return DataFlowValues;
-    }
-    DataFlowValues[Left] = DataFlowValues[Right];
+//        return DataFlowValues;
+//    }
+    DataFlowValues[Left] = result->second;
     return DataFlowValues;
 }
 
@@ -80,11 +89,15 @@ ForwardDataType CopyConstant::computeOutFromIn(llvm::PHINode *I) {
     } else if (llvm::ConstantFP *constFP = dyn_cast<llvm::ConstantFP>(OP1)) {
         OP1DataFlowValues = new DataFlowValue(constFP);
     } else {
-        if (DataFlowValues.find(OP1) != DataFlowValues.end()) {
-            OP1DataFlowValues = DataFlowValues[OP1];
-        } else {
-            OP1DataFlowValues = NULL;
+        auto result = DataFlowValues.find(OP1);
+        if(result != DataFlowValues.end()) {
+            OP1DataFlowValues = result->second;
         }
+//        if (DataFlowValues.find(OP1) != DataFlowValues.end()) {
+//            OP1DataFlowValues = DataFlowValues[OP1];
+//        } else {
+//            OP1DataFlowValues = NULL;
+//        }
     }
 
     if (llvm::ConstantInt *constInt = dyn_cast<llvm::ConstantInt>(OP2)) {
@@ -92,25 +105,29 @@ ForwardDataType CopyConstant::computeOutFromIn(llvm::PHINode *I) {
     } else if (llvm::ConstantFP *constFP = dyn_cast<llvm::ConstantFP>(OP2)) {
         OP2DataFlowValues = new DataFlowValue(constFP);
     } else {
-        if (DataFlowValues.find(OP2) != DataFlowValues.end()) {
-            OP1DataFlowValues = DataFlowValues[OP2];
-        } else {
-            OP2DataFlowValues = NULL;
+        auto result = DataFlowValues.find(OP2);
+        if(result != DataFlowValues.end()) {
+            OP2DataFlowValues = result->second;
         }
+//        if (DataFlowValues.find(OP2) != DataFlowValues.end()) {
+//            OP1DataFlowValues = DataFlowValues[OP2];
+//        } else {
+//            OP2DataFlowValues = NULL;
+//        }
     }
-//    if(not (OP1DataFlowValues || OP2DataFlowValues)){
-//        return DataFlowValues;
-//    } else if(not OP1DataFlowValues){
-//        DataFlowValues[Left] = OP2DataFlowValues;
-//    } else if(not OP2DataFlowValues){
-//        DataFlowValues[Left] = OP1DataFlowValues;
-//    } else{
-//        DataFlowValues[Left] = meet(OP1DataFlowValues, OP2DataFlowValues);
-//    }
-    if(not(OP1DataFlowValues && OP2DataFlowValues)) {
+    if(not (OP1DataFlowValues || OP2DataFlowValues)){
         return DataFlowValues;
+    } else if(not OP1DataFlowValues){
+        DataFlowValues[Left] = OP2DataFlowValues;
+    } else if(not OP2DataFlowValues){
+        DataFlowValues[Left] = OP1DataFlowValues;
+    } else{
+        DataFlowValues[Left] = meet(OP1DataFlowValues, OP2DataFlowValues);
     }
-    DataFlowValues[Left] = meet(OP1DataFlowValues, OP2DataFlowValues);
+//    if(not(OP1DataFlowValues && OP2DataFlowValues)) {
+//        return DataFlowValues;
+//    }
+//    DataFlowValues[Left] = meet(OP1DataFlowValues, OP2DataFlowValues);
     return DataFlowValues;
 }
 
