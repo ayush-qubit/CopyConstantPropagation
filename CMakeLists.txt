@@ -12,7 +12,8 @@ add_definitions(${LLVM_DEFINITIONS})
 include_directories(${LLVM_INCLUDE_DIRS} include)
 link_directories(${LLVM_LIBRARY_DIRS})
 
-#include_directories("/usr/local/include/vasco")
+include_directories("/usr/local/include/vasco")
+include_directories("/usr/local/include/spatial")
 include_directories("./vasco")
 
 add_library(Vasco SHARED IMPORTED)

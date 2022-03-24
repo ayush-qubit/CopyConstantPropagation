@@ -10,5 +10,3 @@ include_directories("/usr/local/include/spatial")
 set_target_properties(CopyConstantAnalysis PROPERTIES
     COMPILE_FLAGS "-g -std=c++14 -O2 -fno-rtti"
 )
-
-target_link_libraries(CopyConstantAnalysis PRIVATE Vasco)

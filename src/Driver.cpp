@@ -26,7 +26,7 @@ int main(int argc, char **argv) {
     }
     string fileName = argv[1];
     fileName += ".txt";
-    CopyConstant CC(true, fileName);
+    CopyConstant CC(true, fileName, false);
 //    auto start = high_resolution_clock::now();
     CC.doAnalysis(*M);
 //    auto stop = high_resolution_clock::now();

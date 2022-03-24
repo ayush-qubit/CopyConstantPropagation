@@ -17,8 +17,8 @@ class CopyConstant : public Analysis<ForwardDataType,NoAnalysisType>{
     private:
     std::unordered_set<llvm::Value*> GlobalVariables;
     public:
-    explicit CopyConstant(bool);
-    CopyConstant(bool, const string &);
+    explicit CopyConstant(bool, bool);
+    CopyConstant(bool, const string &, bool);
     ForwardDataType computeOutFromIn(llvm::Instruction &) override;
     ForwardDataType getBoundaryInformationForward() override;
     ForwardDataType getInitialisationValueForward() override;
