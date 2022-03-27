@@ -1,0 +1,26 @@
+language: cpp
+dist: xenial
+
+addons:
+  apt:
+    update: true
+    sources:
+      - sourceline: 'deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-14 main'
+        key_url: 'http://apt.llvm.org/llvm-snapshot.gpg.key'
+    packages:
+      - llvm-14
+      - llvm-14-dev
+      - llvm-14-tools
+      - clang-14
+      - libomp-14-dev
+
+env:
+  - LLVM_HOME=/usr/lib/llvm-14/
+
+compiler:
+  - gcc
+
+script:
+  - mkdir build
+  - pushd build  
+  - cmake .. && make 
