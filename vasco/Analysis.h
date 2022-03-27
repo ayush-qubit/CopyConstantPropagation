@@ -120,22 +120,17 @@ private:
     int context_label_counter;
     int current_analysis_direction{}; //0:initial pass, 1:forward, 2:backward
     int processing_context_label{};
-//    std::unordered_map<pair<int, Instruction *>, pair<F, B>, HashFunction> IN, OUT;
     std::unordered_map<int,unordered_map<llvm::Instruction *,pair<F,B>>> IN, OUT;
     std::unordered_map<int, bool> isFree;
     std::string direction;
 
     //mapping from context label to context object
-//    map<int,pair<Function*,pair<pair<F,B>,pair<F,B>>>>context_label_to_context_object_map;
     unordered_map<int, Context<F,B> *> context_label_to_context_object_map;
 
     //mapping from context object to context label
     //mapping from function to  pair<inflow,outflow>
     //inflow and outflow are themselves pairs of forward and backward component values.
     //The forward and backward components are themselves pairs of G,L dataflow values.
-
-//    map<pair<Function*,pair<pair<F,B>,pair<F,B>>>,int>context_object_to_context_label_map;
-//    map<Context<F,B>,int> context_object_to_context_label_map;
     bool debug{};
     float total_memory{}, vm{}, rss{};
 
@@ -145,18 +140,7 @@ protected:
 
     //List of contexts
     unordered_set<int> ProcedureContext;
-
-    // mapping from (context label,basic block) to (forward and backward) data flow values
-//    unordered_map<pair<int,BasicBlock*>,std::pair<F,B>,HashFunction> CS_BB_IN, CS_BB_OUT;
-//    unordered_map<int, unordered_map<BasicBlock *, std::pair<F, B>>> CS_BB_IN, CS_BB_OUT;
-
-    // worklist of (context label,basic block) for both directions of analysis
-//    stack<pair<int, BasicBlock *>> backward_worklist, forward_worklist;
     Worklist<pair<int,BasicBlock *>,HashFunction> backward_worklist, forward_worklist;
-
-    // mapping to check which entries are already part of the worklist (key,value)
-//    unordered_map<pair<int, BasicBlock *>, bool, HashFunction> forward_worklist_contains_this_entry;
-//    unordered_map<pair<int, BasicBlock *>, bool, HashFunction> backward_worklist_contains_this_entry;
 
     // mapping from (context label,call site) to target context label
     unordered_map<pair<int, Instruction *>, int, HashFunction> context_transition_graph; //graph
@@ -183,8 +167,6 @@ public:
 
     void doAnalysis(Module &M);
 
-//    void INIT_CONTEXT(pair<Function*,pair<pair<F,B>,pair<F,B>>> context_object);
-//    void INIT_CONTEXT(Context<F,B>);
     void INIT_CONTEXT(llvm::Function *, const std::pair<F, B> &, const std::pair<F, B> &);
 
     void doAnalysisForward();
@@ -195,7 +177,6 @@ public:
 
 //    B NormalFlowFunctionBackward(pair<int, BasicBlock *>);
 
-//    int check_if_context_already_exists(pair<Function*,pair<pair<F,B>,pair<F,B>>> new_context_object);
     int check_if_context_already_exists(llvm::Function *, const pair<F, B> &, const pair<F, B> &);
 
     void drawSuperGraph(Module &M);
@@ -823,17 +804,11 @@ void Analysis<F, B>::INIT_CONTEXT(llvm::Function *function, const std::pair<F, B
         for (BasicBlock *BB:post_order(&context_object->getFunction()->getEntryBlock())) {
             BasicBlock &b = *BB;
             forward_worklist.workInsert({current_context_label,&b});
-//            forward_worklist.push(make_pair(current_context_label, &b));
-//            forward_worklist_contains_this_entry[make_pair(current_context_label, &b)] = true;
             if(direction == "bidirectional"){
                 backward_worklist.workInsert({current_context_label,&b});
-//                backward_worklist.push(make_pair(current_context_label, &b));
-//                backward_worklist_contains_this_entry[make_pair(current_context_label, &b)] = true;
             }
             setForwardIn(current_context_label, &b, getInitialisationValueForward());
             setForwardOut(current_context_label, &b, getInitialisationValueForward());
-//            CS_BB_IN[make_pair(current_context_label,&b)].first=getInitialisationValueForward();
-//            CS_BB_OUT[make_pair(current_context_label,&b)].first=getInitialisationValueForward();
 
             //initialise IN-OUT maps for every instruction
             for (auto inst = &*(b.begin()); inst != nullptr; inst = inst->getNextNonDebugInstruction()) {

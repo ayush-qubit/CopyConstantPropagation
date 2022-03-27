@@ -4,7 +4,7 @@
 #include "llvm/IR/Function.h"
 #include "llvm/IR/Instruction.h"
 #include "llvm/Support/Debug.h"
-#include "vasco/Analysis.h"
+#include "Analysis.h"
 #include "DataFlowValue.h"
 #include <map>
 #include <string>
@@ -17,8 +17,8 @@ class CopyConstant : public Analysis<ForwardDataType,NoAnalysisType>{
     private:
     std::unordered_set<llvm::Value*> GlobalVariables;
     public:
-    explicit CopyConstant(bool, bool);
-    CopyConstant(bool, const string &, bool);
+    explicit CopyConstant(bool);
+    CopyConstant(bool, const string &);
     ForwardDataType computeOutFromIn(llvm::Instruction &) override;
     ForwardDataType getBoundaryInformationForward() override;
     ForwardDataType getInitialisationValueForward() override;

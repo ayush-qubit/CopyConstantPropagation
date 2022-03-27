@@ -1,10 +1,10 @@
 #include "CopyConstant.h"
 
-CopyConstant::CopyConstant(bool debug, bool SLIM) : Analysis(debug, SLIM) {
+CopyConstant::CopyConstant(bool debug) : Analysis(debug) {
 
 }
 
-CopyConstant::CopyConstant(bool debug, const string &fileName, bool SLIM) : Analysis(debug, fileName, SLIM) {
+CopyConstant::CopyConstant(bool debug, const string &fileName) : Analysis(debug, fileName) {
 
 }
 

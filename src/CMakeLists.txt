@@ -9,5 +9,5 @@ include_directories(${PROJECT_SOURCE_DIR}/vasco)
 llvm_config (Driver ${LLVM_LINK_COMPONENTS})
 
 target_link_libraries(Driver PRIVATE CopyConstantAnalysis)
-target_link_libraries(Driver PRIVATE Vasco)
+#target_link_libraries(Driver PRIVATE Vasco)
 target_link_libraries(Driver PRIVATE Spatial)
