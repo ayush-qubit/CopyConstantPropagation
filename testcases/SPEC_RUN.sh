@@ -10,11 +10,9 @@ do
 	FILENAME=$(basename $FILE .ll)
 	echo -e $FILENAME
 	 if [[ $FILENAME == "gobmk" ]]; then
-	 	#statements
 	 	continue;
 	 fi
 	if [[ $FILENAME == "sjeng" ]]; then
-		#statements
 		continue;
 	fi
 	$DRIVER $FILE

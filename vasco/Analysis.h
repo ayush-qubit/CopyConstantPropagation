@@ -120,22 +120,18 @@ private:
     int context_label_counter;
     int current_analysis_direction{}; //0:initial pass, 1:forward, 2:backward
     int processing_context_label{};
-//    std::unordered_map<pair<int, Instruction *>, pair<F, B>, HashFunction> IN, OUT;
-    std::unordered_map<int,unordered_map<llvm::Instruction *,pair<F,B>>> IN, OUT;
+    std::unordered_map<int, unordered_map<llvm::Instruction *, pair<F, B>>> IN, OUT;
+    std::unordered_map<llvm::CallInst *, int> CallSiteContext;
     std::unordered_map<int, bool> isFree;
     std::string direction;
 
     //mapping from context label to context object
-//    map<int,pair<Function*,pair<pair<F,B>,pair<F,B>>>>context_label_to_context_object_map;
-    unordered_map<int, Context<F,B> *> context_label_to_context_object_map;
+    unordered_map<int, Context<F, B> *> context_label_to_context_object_map;
 
     //mapping from context object to context label
     //mapping from function to  pair<inflow,outflow>
     //inflow and outflow are themselves pairs of forward and backward component values.
     //The forward and backward components are themselves pairs of G,L dataflow values.
-
-//    map<pair<Function*,pair<pair<F,B>,pair<F,B>>>,int>context_object_to_context_label_map;
-//    map<Context<F,B>,int> context_object_to_context_label_map;
     bool debug{};
     float total_memory{}, vm{}, rss{};
 
@@ -145,18 +141,7 @@ protected:
 
     //List of contexts
     unordered_set<int> ProcedureContext;
-
-    // mapping from (context label,basic block) to (forward and backward) data flow values
-//    unordered_map<pair<int,BasicBlock*>,std::pair<F,B>,HashFunction> CS_BB_IN, CS_BB_OUT;
-//    unordered_map<int, unordered_map<BasicBlock *, std::pair<F, B>>> CS_BB_IN, CS_BB_OUT;
-
-    // worklist of (context label,basic block) for both directions of analysis
-//    stack<pair<int, BasicBlock *>> backward_worklist, forward_worklist;
-    Worklist<pair<int,BasicBlock *>,HashFunction> backward_worklist, forward_worklist;
-
-    // mapping to check which entries are already part of the worklist (key,value)
-//    unordered_map<pair<int, BasicBlock *>, bool, HashFunction> forward_worklist_contains_this_entry;
-//    unordered_map<pair<int, BasicBlock *>, bool, HashFunction> backward_worklist_contains_this_entry;
+    Worklist<pair<int, BasicBlock *>, HashFunction> backward_worklist, forward_worklist;
 
     // mapping from (context label,call site) to target context label
     unordered_map<pair<int, Instruction *>, int, HashFunction> context_transition_graph; //graph
@@ -183,9 +168,7 @@ public:
 
     void doAnalysis(Module &M);
 
-//    void INIT_CONTEXT(pair<Function*,pair<pair<F,B>,pair<F,B>>> context_object);
-//    void INIT_CONTEXT(Context<F,B>);
-    void INIT_CONTEXT(llvm::Function *, const std::pair<F, B> &, const std::pair<F, B> &);
+    void INIT_CONTEXT(llvm::Function *, const std::pair<F, B> &, const std::pair<F, B> &, llvm::CallInst * = nullptr);
 
     void doAnalysisForward();
 
@@ -195,7 +178,6 @@ public:
 
 //    B NormalFlowFunctionBackward(pair<int, BasicBlock *>);
 
-//    int check_if_context_already_exists(pair<Function*,pair<pair<F,B>,pair<F,B>>> new_context_object);
     int check_if_context_already_exists(llvm::Function *, const pair<F, B> &, const pair<F, B> &);
 
     void drawSuperGraph(Module &M);
@@ -221,11 +203,11 @@ public:
 
     B getBackwardComponentAtOutOfThisInstruction(Instruction &I);
 
-    void setForwardComponentAtInOfThisInstruction(Instruction *I, const F& in_value);
+    void setForwardComponentAtInOfThisInstruction(Instruction *I, const F &in_value);
 
     void setBackwardComponentAtInOfThisInstruction(Instruction *I, B in_value);
 
-    void setForwardComponentAtOutOfThisInstruction(Instruction *I, const F& out_value);
+    void setForwardComponentAtOutOfThisInstruction(Instruction *I, const F &out_value);
 
     void setBackwardComponentAtOutOfThisInstruction(Instruction *I, B out_value);
 
@@ -277,11 +259,11 @@ public:
 
     virtual F getBoundaryInformationForward();//{}
     virtual F getInitialisationValueForward();//{}
-    virtual F performMeetForward(const F& d1, const F& d2) const;//{}
+    virtual F performMeetForward(const F &d1, const F &d2) const;//{}
     virtual bool EqualDataFlowValuesForward(const F &d1, const F &d2) const;//{}
-    virtual F getPurelyLocalComponentForward(const F& dfv) const;
+    virtual F getPurelyLocalComponentForward(const F &dfv) const;
 
-    virtual F getPurelyGlobalComponentForward(const F& dfv) const;
+    virtual F getPurelyGlobalComponentForward(const F &dfv) const;
     // virtual F getMixedComponentForward(F dfv);
     // virtual F getCombinedValuesAtCallForward(F dfv1,F dfv2);
 
@@ -437,7 +419,7 @@ B Analysis<F, B>::getInitialisationValueBackward() {
 }
 
 template<class F, class B>
-F Analysis<F, B>::performMeetForward(const F& d1, const F& d2) const {
+F Analysis<F, B>::performMeetForward(const F &d1, const F &d2) const {
     llvm::outs() << "\nThis function performMeetForward() has not been implemented. EXITING !!\n";
     exit(-1);
 }
@@ -467,13 +449,13 @@ B Analysis<F, B>::getPurelyGlobalComponentBackward(B dfv) {
 }
 
 template<class F, class B>
-F Analysis<F, B>::getPurelyGlobalComponentForward(const F& dfv) const {
+F Analysis<F, B>::getPurelyGlobalComponentForward(const F &dfv) const {
     llvm::outs() << "\nThis function getPurelyGlobalComponentForward() has not been implemented. EXITING !!\n";
     exit(-1);
 }
 
 template<class F, class B>
-F Analysis<F, B>::getPurelyLocalComponentForward(const F& dfv) const {
+F Analysis<F, B>::getPurelyLocalComponentForward(const F &dfv) const {
     llvm::outs() << "\nThis function getPurelyLocalComponentForward() has not been implemented. EXITING !!\n";
     exit(-1);
 }
@@ -527,13 +509,13 @@ F Analysis<F,B>::getCombinedValuesAtCallForward(F dfv1,F dfv2)
 template<class F, class B>
 void Analysis<F, B>::printModule(Module &M) {
     llvm::outs() << "--------------------------------------------" << "\n";
-    for (Function &Func : M) {
+    for (Function &Func: M) {
         llvm::outs() << "FUNCTION NAME: ";
         llvm::outs() << Func.getName() << "\n";
         llvm::outs() << "----------------------------" << "\n";
-        for (BasicBlock &BB : Func) {
+        for (BasicBlock &BB: Func) {
             llvm::outs() << "----------------------" << "\n";
-            for (Instruction &inst : BB) {
+            for (Instruction &inst: BB) {
                 llvm::outs() << inst << "\n";
             }
             llvm::outs() << "----------------------" << "\n";
@@ -546,15 +528,17 @@ void Analysis<F, B>::printModule(Module &M) {
 
 template<class F, class B>
 pair<F, B>
-Analysis<F, B>::CallInflowFunction(int context_label, Function *target_function, BasicBlock *bb, const F& a1, const B& d1) {
+Analysis<F, B>::CallInflowFunction(int context_label, Function *target_function, BasicBlock *bb, const F &a1,
+                                   const B &d1) {
     llvm::outs() << "\nThis function CallInflowFunction() has not been implemented. EXITING !!\n";
     exit(-1);
 }
 
 template<class F, class B>
 pair<F, B>
-Analysis<F, B>::CallOutflowFunction(int context_label, Function *target_function, BasicBlock *bb, const F& a3, const B& d3, const F& a1,
-                                    const B& d1) {
+Analysis<F, B>::CallOutflowFunction(int context_label, Function *target_function, BasicBlock *bb, const F &a3,
+                                    const B &d3, const F &a1,
+                                    const B &d1) {
     llvm::outs() << "\nThis function CallOutflowFunction() has not been implemented. EXITING !!\n";
     exit(-1);
 }
@@ -585,13 +569,13 @@ B Analysis<F, B>::getBackwardComponentAtOutOfThisInstruction(Instruction &I) {
 }
 
 template<class F, class B>
-void Analysis<F, B>::setForwardComponentAtInOfThisInstruction(Instruction *I,const F& in_value) {
+void Analysis<F, B>::setForwardComponentAtInOfThisInstruction(Instruction *I, const F &in_value) {
     int label = getProcessingContextLabel();
     IN[label][I].first = in_value;
 }
 
 template<class F, class B>
-void Analysis<F, B>::setForwardComponentAtOutOfThisInstruction(Instruction *I, const F& out_value) {
+void Analysis<F, B>::setForwardComponentAtOutOfThisInstruction(Instruction *I, const F &out_value) {
     int label = getProcessingContextLabel();
     OUT[label][I].first = out_value;
 }
@@ -622,12 +606,12 @@ pair<F, B> Analysis<F, B>::getOut(int label, llvm::BasicBlock *BB) {
 }
 
 template<class F, class B>
-void Analysis<F, B>::setForwardIn(int label, llvm::BasicBlock *BB, const F& dataflowvalue) {
+void Analysis<F, B>::setForwardIn(int label, llvm::BasicBlock *BB, const F &dataflowvalue) {
     IN[label][&(*(BB->begin()))].first = dataflowvalue;
 }
 
 template<class F, class B>
-void Analysis<F, B>::setForwardOut(int label, llvm::BasicBlock *BB, const F& dataflowvalue) {
+void Analysis<F, B>::setForwardOut(int label, llvm::BasicBlock *BB, const F &dataflowvalue) {
     OUT[label][&(BB->back())].first = dataflowvalue;
 }
 
@@ -673,7 +657,7 @@ B Analysis<F, B>::getBackwardOutflowForThisContext(int context_label) {
 
 
 template<class F, class B>
-void Analysis<F, B>::setForwardInflowForThisContext(int context_label, const F& forward_inflow) {
+void Analysis<F, B>::setForwardInflowForThisContext(int context_label, const F &forward_inflow) {
 //    context_label_to_context_object_map[context_label].second.first.first=forward_inflow;
     context_label_to_context_object_map[context_label]->setForwardInflow(forward_inflow);
 }
@@ -685,7 +669,7 @@ void Analysis<F, B>::setBackwardInflowForThisContext(int context_label, B backwa
 }
 
 template<class F, class B>
-void Analysis<F, B>::setForwardOutflowForThisContext(int context_label, const F& forward_outflow) {
+void Analysis<F, B>::setForwardOutflowForThisContext(int context_label, const F &forward_outflow) {
 //    context_label_to_context_object_map[context_label].second.second.first=forward_outflow;
     context_label_to_context_object_map[context_label]->setForwardOutflow(forward_outflow);
 }
@@ -725,8 +709,8 @@ void Analysis<F, B>::doAnalysis(Module &M) {
         }
     }
     auto stop = high_resolution_clock::now();
-    auto duration = duration_cast<seconds>(stop - start);
-    llvm::outs() << "Time taken in Splitting Basic Block : " << duration.count() << " seconds" << "\n";
+    auto duration = duration_cast<milliseconds>(stop - start);
+    llvm::outs() << "Time taken in Splitting Basic Block : " << duration.count() << " milliseconds" << "\n";
     start = high_resolution_clock::now();
     int i = 0;
     for (Function &function: M) {
@@ -748,7 +732,6 @@ void Analysis<F, B>::doAnalysis(Module &M) {
             }
             setCurrentAnalysisDirection(0);
             INIT_CONTEXT(fptr, {forward_inflow_bi, backward_inflow_bi}, {forward_outflow_bi, backward_outflow_bi});
-//            INIT_CONTEXT(make_pair(fptr,make_pair(make_pair(forward_inflow_bi,backward_inflow_bi),make_pair(forward_outflow_bi,backward_outflow_bi))));
         }
     }
     if (std::is_same<F, NoAnalysisType>::value) {
@@ -792,17 +775,25 @@ void Analysis<F, B>::doAnalysis(Module &M) {
 //        }
     }
     stop = high_resolution_clock::now();
-    duration = duration_cast<seconds>(stop - start);
-    llvm::outs() << "Time taken by analysis: " << duration.count() << " seconds" << "\n";
+    duration = duration_cast<milliseconds>(stop - start);
+    llvm::outs() << "Time taken by analysis: " << duration.count() << " milliseconds" << "\n";
 }
 
 
 template<class F, class B>
-void Analysis<F, B>::INIT_CONTEXT(llvm::Function *function, const std::pair<F, B>& Inflow, const std::pair<F, B>& Outflow) {
+void
+Analysis<F, B>::INIT_CONTEXT(llvm::Function *function, const std::pair<F, B> &Inflow, const std::pair<F, B> &Outflow, llvm::CallInst *callInst) {
     context_label_counter++;
-    Context<F,B> *context_object = new Context<F,B>(context_label_counter,function,Inflow,Outflow);
+    Context<F, B> *context_object = new Context<F, B>(context_label_counter, function, Inflow, Outflow);
     int current_context_label = context_object->getLabel();
     setProcessingContextLabel(current_context_label);
+    F Initialization_Value = getInitialisationValueForward();
+    if(callInst) {
+        auto context_label = this->CallSiteContext.find(callInst);
+        if(context_label != this->CallSiteContext.end()) {
+            Initialization_Value = context_label_to_context_object_map[context_label->second]->getOutflowValue().first;
+        }
+    }
     if (std::is_same<B, NoAnalysisType>::value) {
         if (debug) {
             llvm::outs() << "INITIALIZING CONTEXT:-" << "\n";
@@ -811,34 +802,28 @@ void Analysis<F, B>::INIT_CONTEXT(llvm::Function *function, const std::pair<F, B
             llvm::outs() << "Inflow Value: ";
             printDataFlowValuesForward(Inflow.first);
             llvm::outs() << "Outflow value: ";
-            printDataFlowValuesForward(getInitialisationValueForward());
+            printDataFlowValuesForward(Initialization_Value);
         }
         //forward analysis
         context_label_to_context_object_map[current_context_label] = context_object;
 
         setForwardOutflowForThisContext(current_context_label,
-                                        getInitialisationValueForward());//setting outflow forward
+                                        Initialization_Value);//setting outflow forward
         ProcedureContext.insert(current_context_label);
 
-        for (BasicBlock *BB:post_order(&context_object->getFunction()->getEntryBlock())) {
+        for (BasicBlock *BB: post_order(&context_object->getFunction()->getEntryBlock())) {
             BasicBlock &b = *BB;
-            forward_worklist.workInsert({current_context_label,&b});
-//            forward_worklist.push(make_pair(current_context_label, &b));
-//            forward_worklist_contains_this_entry[make_pair(current_context_label, &b)] = true;
-            if(direction == "bidirectional"){
-                backward_worklist.workInsert({current_context_label,&b});
-//                backward_worklist.push(make_pair(current_context_label, &b));
-//                backward_worklist_contains_this_entry[make_pair(current_context_label, &b)] = true;
+            forward_worklist.workInsert({current_context_label, &b});
+            if (direction == "bidirectional") {
+                backward_worklist.workInsert({current_context_label, &b});
             }
-            setForwardIn(current_context_label, &b, getInitialisationValueForward());
-            setForwardOut(current_context_label, &b, getInitialisationValueForward());
-//            CS_BB_IN[make_pair(current_context_label,&b)].first=getInitialisationValueForward();
-//            CS_BB_OUT[make_pair(current_context_label,&b)].first=getInitialisationValueForward();
+            setForwardIn(current_context_label, &b, Initialization_Value);
+            setForwardOut(current_context_label, &b, Initialization_Value);
 
             //initialise IN-OUT maps for every instruction
             for (auto inst = &*(b.begin()); inst != nullptr; inst = inst->getNextNonDebugInstruction()) {
-                setForwardComponentAtInOfThisInstruction(&(*inst), getInitialisationValueForward());
-                setForwardComponentAtOutOfThisInstruction(&(*inst), getInitialisationValueForward());
+                setForwardComponentAtInOfThisInstruction(&(*inst), Initialization_Value);
+                setForwardComponentAtOutOfThisInstruction(&(*inst), Initialization_Value);
             }
         }
         if (current_context_label == 0)//main function with first invocation
@@ -846,7 +831,7 @@ void Analysis<F, B>::INIT_CONTEXT(llvm::Function *function, const std::pair<F, B
             setForwardInflowForThisContext(current_context_label,
                                            getBoundaryInformationForward());//setting inflow forward
         } else {
-//            setForwardInflowForThisContext(current_context_label,context_object.second.first.first);//setting inflow forward
+            this->CallSiteContext[callInst] = current_context_label;
             setForwardInflowForThisContext(current_context_label, context_object->getInflowValue().first);
         }
         setForwardIn(current_context_label, &context_object->getFunction()->getEntryBlock(),
@@ -1187,7 +1172,7 @@ void Analysis<F, B>::doAnalysisForward() {
 //            CS_BB_IN[current_pair].first=getInitialisationValueForward();
 
             //step 7 and 8
-            for (auto pred_bb:predecessors(bb)) {
+            for (auto pred_bb: predecessors(bb)) {
                 setForwardIn(current_pair.first, current_pair.second,
                              performMeetForward(getIn(current_pair.first, current_pair.second).first,
                                                 getOut(current_pair.first,
@@ -1321,8 +1306,7 @@ void Analysis<F, B>::doAnalysisForward() {
                     } else//step 20
                     {
                         //creating a new context
-//                        INIT_CONTEXT(new_context_object); //step 21
-                        INIT_CONTEXT(target_function, {a2, d2}, {new_outflow_forward, new_outflow_backward}); //step 21
+                        INIT_CONTEXT(target_function, {a2, d2}, {new_outflow_forward, new_outflow_backward}, ci); //step 21
 
                         //step 14
                         //This step must be done after above step because context label counter gets updated after INIT-Context is invoked.
@@ -1368,20 +1352,20 @@ void Analysis<F, B>::doAnalysisForward() {
         if (changed)//step 24
         {
             //not yet converged
-            for (auto succ_bb:successors(bb))//step 25
+            for (auto succ_bb: successors(bb))//step 25
             {
                 //step 26
 //                if (!forward_worklist_contains_this_entry[make_pair(current_context_label, succ_bb)]) {
 //                    forward_worklist.push(make_pair(current_context_label, succ_bb));
 //                    forward_worklist_contains_this_entry[make_pair(current_context_label, succ_bb)] = true;
 //                }
-                forward_worklist.workInsert({current_context_label,succ_bb});
+                forward_worklist.workInsert({current_context_label, succ_bb});
                 if (direction == "bidirectional") {
 //                    if (!backward_worklist_contains_this_entry[make_pair(current_context_label, succ_bb)]) {
 //                        backward_worklist.push(make_pair(current_context_label, succ_bb));
 //                        backward_worklist_contains_this_entry[make_pair(current_context_label, succ_bb)] = true;
 //                    }
-                    backward_worklist.workInsert({current_context_label,succ_bb});
+                    backward_worklist.workInsert({current_context_label, succ_bb});
                 }
             }
 
@@ -1394,9 +1378,8 @@ void Analysis<F, B>::doAnalysisForward() {
             setForwardOutflowForThisContext(current_context_label, getPurelyGlobalComponentForward(
                     getOut(current_pair.first,
                            current_pair.second).first));//setting forward outflow CS_BB_OUT[current_pair].first
-//            context_label_to_context_object_map[current_context_label].second.second.first=getPurelyGlobalComponentForward(CS_BB_OUT[current_pair].first);//setting forward outflow
             bool flag = false;
-            for (auto context_inst_pairs:context_transition_graph)//step 29
+            for (auto context_inst_pairs: context_transition_graph)//step 29
             {
                 if (context_inst_pairs.second == current_context_label)//matching the called function
                 {
@@ -1404,24 +1387,10 @@ void Analysis<F, B>::doAnalysisForward() {
                     BasicBlock *bb = context_inst_pairs.first.second->getParent();
                     pair<int, BasicBlock *> context_bb_pair = make_pair(context_inst_pairs.first.first, bb);
                     forward_worklist.workInsert(context_bb_pair);
-//                    if (!forward_worklist_contains_this_entry[context_bb_pair]) {
-//                        forward_worklist.push(context_bb_pair);
-//                        forward_worklist_contains_this_entry[context_bb_pair] = true;
-//                    }
                     if (direction == "bidirectional") {
                         backward_worklist.workInsert(context_bb_pair);
-//                        if (!backward_worklist_contains_this_entry[context_bb_pair]) {
-//                            backward_worklist.push(context_bb_pair);
-//                            backward_worklist_contains_this_entry[context_bb_pair] = true;
-//                        }
                     }
                 }
-                if (context_inst_pairs.first.first == current_context_label) {
-                    flag = true;
-                }
-            }
-            if (not flag) {
-//                freeMemory(current_context_label);
             }
         }
     }
@@ -1457,10 +1426,11 @@ F Analysis<F, B>::NormalFlowFunctionForward(pair<int, BasicBlock *> current_pair
 
 
 template<class F, class B>
-int Analysis<F, B>::check_if_context_already_exists(llvm::Function *function, const pair<F, B>& Inflow, const pair<F, B>& Outflow) {
+int Analysis<F, B>::check_if_context_already_exists(llvm::Function *function, const pair<F, B> &Inflow,
+                                                    const pair<F, B> &Outflow) {
     if (std::is_same<B, NoAnalysisType>::value) {
         //forward only
-        for (auto set_itr:ProcedureContext) {
+        for (auto set_itr: ProcedureContext) {
             Context<F, B> *current_object = context_label_to_context_object_map[set_itr];
             F new_context_values = Inflow.first;
             F current_context_values = current_object->getInflowValue().first;
@@ -1869,7 +1839,7 @@ void Analysis<F, B>::performSplittingBB(Function &function) {
     bool previousInstructionWasSplitted = false;
     bool previousInstructionWasCallInstruction = false;
     map<Instruction *, bool> isSplittedOnThisInstruction;
-    for (BasicBlock *BB:inverse_post_order(&function.back())) {
+    for (BasicBlock *BB: inverse_post_order(&function.back())) {
         BasicBlock &b = *BB;
         previousInstructionWasSplitted = true;
         previousInstructionWasCallInstruction = false;
@@ -1920,7 +1890,7 @@ void Analysis<F, B>::performSplittingBB(Function &function) {
     }
     BasicBlock *containingBB;
 
-    for (auto split_here:isSplittedOnThisInstruction) {
+    for (auto split_here: isSplittedOnThisInstruction) {
         if (split_here.second == false)//no splitting to be done
             continue;
         containingBB = split_here.first->getParent();
@@ -1951,10 +1921,10 @@ void Analysis<F, B>::drawSuperGraph(Module &M) {
     llvm::raw_string_ostream ss1(str1);
     int cnt = 0;
     os << "digraph{\ngraph[fontsize=40];\n";
-    for (Function &function:M) {
+    for (Function &function: M) {
         os << "subgraph cluster_" << cnt++ << "{\n";
         os << "style=filled;\ncolor=lightgrey;\nnode [style=filled,fillcolor=white,color=black,fontsize=40];\n";
-        for (BasicBlock *BB:inverse_post_order(&function.back())) {
+        for (BasicBlock *BB: inverse_post_order(&function.back())) {
             BasicBlock &b = *BB;
             os << "BB";
             b.printAsOperand(ss1);
@@ -1982,7 +1952,7 @@ void Analysis<F, B>::drawSuperGraph(Module &M) {
 template<class F, class B>
 void Analysis<F, B>::printContext() {
     llvm::outs() << "\n";
-    for (auto label : ProcedureContext) {
+    for (auto label: ProcedureContext) {
         llvm::outs()
                 << "=================================================================================================="
                 << "\n";

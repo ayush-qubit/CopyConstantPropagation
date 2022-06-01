@@ -6,6 +6,6 @@ void foo1(){
     b = a;
 }
 int main(){
-	a=10;
+	a=-10.10;
     foo1();
 }

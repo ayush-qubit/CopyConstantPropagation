@@ -27,13 +27,9 @@ int main(int argc, char **argv) {
     string fileName = argv[1];
     fileName += ".txt";
     CopyConstant CC(true, fileName);
-//    auto start = high_resolution_clock::now();
     CC.doAnalysis(*M);
-//    auto stop = high_resolution_clock::now();
-//    auto duration = duration_cast<seconds>(stop - start);
-    CC.printContext();
+//    CC.printContext();
     outs() << "\n";
-//    outs() << "Time taken by analysis: " << duration.count() << " seconds" << "\n";
     outs() << "Total number of contexts created: " << CC.getNumberOfContexts() << "\n";
     return 0;
 }

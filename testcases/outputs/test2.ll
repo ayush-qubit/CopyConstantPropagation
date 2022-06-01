@@ -17,7 +17,7 @@ entry:
 ; Function Attrs: noinline nounwind uwtable
 define dso_local i32 @main() #0 {
 entry:
-  store i32 10, i32* @a, align 4
+  store i32 -10, i32* @a, align 4
   call void @foo1()
   ret i32 0
 }

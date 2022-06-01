@@ -11,6 +11,7 @@ void foo(){
         foo();
         // 2. a=top,b=top
     }
+    // 2.
     b = 200;
     a = b+1;
 }
@@ -25,6 +26,5 @@ int main(){
     }
     x++;
     a = x;
-    foo();
     return 0;
 }
