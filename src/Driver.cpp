@@ -5,19 +5,14 @@
 #include "llvm/Support/SourceMgr.h"
 #include "llvm/Transforms/Utils/UnifyFunctionExitNodes.h"
 #include "CopyConstant.h"
-#include "chrono"
 
-#include <unistd.h>
-#include <ios>
-#include <fstream>
 #include <string>
 #include <iomanip>
 
 using namespace llvm;
-using namespace std::chrono;
 
-int main(int argc, char **argv){
-    if(argc<1){
+int main(int argc, char **argv) {
+    if (argc < 1) {
         return 1;
     }
     LLVMContext Context;
@@ -31,14 +26,14 @@ int main(int argc, char **argv){
     }
     string fileName = argv[1];
     fileName += ".txt";
-    CopyConstant CC(false,fileName);
-    auto start = high_resolution_clock::now();
+    CopyConstant CC(true, fileName);
     CC.doAnalysis(*M);
-    auto stop = high_resolution_clock::now();
-    auto duration = duration_cast<seconds>(stop - start);
-    CC.printContext();
+<<<<<<< HEAD
+//    CC.printContext();
+=======
+     CC.printContext();
+>>>>>>> testing
     outs() << "\n";
-    outs() << "Time taken by analysis: " << duration.count() << " seconds" << "\n";
     outs() << "Total number of contexts created: " << CC.getNumberOfContexts() << "\n";
     return 0;
 }
