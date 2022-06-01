@@ -120,13 +120,21 @@ private:
     int context_label_counter;
     int current_analysis_direction{}; //0:initial pass, 1:forward, 2:backward
     int processing_context_label{};
+<<<<<<< HEAD
     std::unordered_map<int, unordered_map<llvm::Instruction *, pair<F, B>>> IN, OUT;
     std::unordered_map<llvm::CallInst *, int> CallSiteContext;
+=======
+    std::unordered_map<int,unordered_map<llvm::Instruction *,pair<F,B>>> IN, OUT;
+>>>>>>> testing
     std::unordered_map<int, bool> isFree;
     std::string direction;
 
     //mapping from context label to context object
+<<<<<<< HEAD
     unordered_map<int, Context<F, B> *> context_label_to_context_object_map;
+=======
+    unordered_map<int, Context<F,B> *> context_label_to_context_object_map;
+>>>>>>> testing
 
     //mapping from context object to context label
     //mapping from function to  pair<inflow,outflow>
@@ -141,7 +149,11 @@ protected:
 
     //List of contexts
     unordered_set<int> ProcedureContext;
+<<<<<<< HEAD
     Worklist<pair<int, BasicBlock *>, HashFunction> backward_worklist, forward_worklist;
+=======
+    Worklist<pair<int,BasicBlock *>,HashFunction> backward_worklist, forward_worklist;
+>>>>>>> testing
 
     // mapping from (context label,call site) to target context label
     unordered_map<pair<int, Instruction *>, int, HashFunction> context_transition_graph; //graph
@@ -168,7 +180,11 @@ public:
 
     void doAnalysis(Module &M);
 
+<<<<<<< HEAD
     void INIT_CONTEXT(llvm::Function *, const std::pair<F, B> &, const std::pair<F, B> &, llvm::CallInst * = nullptr);
+=======
+    void INIT_CONTEXT(llvm::Function *, const std::pair<F, B> &, const std::pair<F, B> &);
+>>>>>>> testing
 
     void doAnalysisForward();
 
@@ -813,12 +829,21 @@ Analysis<F, B>::INIT_CONTEXT(llvm::Function *function, const std::pair<F, B> &In
 
         for (BasicBlock *BB: post_order(&context_object->getFunction()->getEntryBlock())) {
             BasicBlock &b = *BB;
+<<<<<<< HEAD
             forward_worklist.workInsert({current_context_label, &b});
             if (direction == "bidirectional") {
                 backward_worklist.workInsert({current_context_label, &b});
             }
             setForwardIn(current_context_label, &b, Initialization_Value);
             setForwardOut(current_context_label, &b, Initialization_Value);
+=======
+            forward_worklist.workInsert({current_context_label,&b});
+            if(direction == "bidirectional"){
+                backward_worklist.workInsert({current_context_label,&b});
+            }
+            setForwardIn(current_context_label, &b, getInitialisationValueForward());
+            setForwardOut(current_context_label, &b, getInitialisationValueForward());
+>>>>>>> testing
 
             //initialise IN-OUT maps for every instruction
             for (auto inst = &*(b.begin()); inst != nullptr; inst = inst->getNextNonDebugInstruction()) {

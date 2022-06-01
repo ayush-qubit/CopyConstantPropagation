@@ -1,10 +1,10 @@
 #include "CopyConstant.h"
 
-CopyConstant::CopyConstant(bool debug) : Analysis(debug) {
+CopyConstant::CopyConstant(bool debug) : Analysis(debug,false) {
 
 }
 
-CopyConstant::CopyConstant(bool debug, const string &fileName) : Analysis(debug, fileName) {
+CopyConstant::CopyConstant(bool debug, const string &fileName) : Analysis(debug, fileName, false) {
 
 }
 
@@ -90,19 +90,15 @@ ForwardDataType CopyConstant::computeOutFromIn(llvm::PHINode *I) {
             OP2DataFlowValues = result->second;
         }
     }
-    if(not (OP1DataFlowValues && OP2DataFlowValues)){
+    if(not (OP1DataFlowValues || OP2DataFlowValues)){
         return DataFlowValues;
+    } else if(not OP1DataFlowValues){
+        DataFlowValues[Left] = OP2DataFlowValues;
+    } else if(not OP2DataFlowValues){
+        DataFlowValues[Left] = OP1DataFlowValues;
+    } else{
+        DataFlowValues[Left] = meet(OP1DataFlowValues, OP2DataFlowValues);
     }
-    DataFlowValues[Left] = meet(OP1DataFlowValues, OP2DataFlowValues);
-//    if(not (OP1DataFlowValues || OP2DataFlowValues)){
-//        return DataFlowValues;
-//    } else if(not OP1DataFlowValues){
-//        DataFlowValues[Left] = OP2DataFlowValues;
-//    } else if(not OP2DataFlowValues){
-//        DataFlowValues[Left] = OP1DataFlowValues;
-//    } else{
-//        DataFlowValues[Left] = meet(OP1DataFlowValues, OP2DataFlowValues);
-//    }
     return DataFlowValues;
 }
 

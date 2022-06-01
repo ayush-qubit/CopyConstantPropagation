@@ -28,7 +28,11 @@ int main(int argc, char **argv) {
     fileName += ".txt";
     CopyConstant CC(true, fileName);
     CC.doAnalysis(*M);
+<<<<<<< HEAD
 //    CC.printContext();
+=======
+     CC.printContext();
+>>>>>>> testing
     outs() << "\n";
     outs() << "Total number of contexts created: " << CC.getNumberOfContexts() << "\n";
     return 0;
