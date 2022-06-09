@@ -13,6 +13,7 @@ include_directories(${LLVM_INCLUDE_DIRS} include)
 link_directories(${LLVM_LIBRARY_DIRS})
 
 include_directories("/usr/local/include/vasco")
+include_directories("/usr/local/include/spatial")
 
 add_subdirectory(lib)
 add_subdirectory(src)
